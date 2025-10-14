@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | SHOPRITE Future Fashion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #ffffff 40%, #f9f9f9 100%);
+            color: #111111;
+            overflow-x: hidden;
+        }
+
+        /* Gradient text logo */
+        .text-logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #E74C3C, #FFD700, #E74C3C);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Hero animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Default Logo Size */
+        #nav-logo {
+            height: 40px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Scrolled Logo Size */
+        #main-header.scrolled .nav-logo {
+            height: 30px;
+            /* width: 38px; */
+        }
+
+        .hero-title {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-sub {
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        /* Card hover tilt + glow */
+        .contact-card {
+            perspective: 1000px;
+            transition: all 0.4s ease-in-out;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 45px rgba(231, 76, 60, 0.3);
+            border-color: #E74C3C;
+        }
+
+        /* Floating buttons */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5);
+            }
+
+            70% {
+                transform: scale(1.1);
+                box-shadow: 0 0 0 15px rgba(231, 76, 60, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(231, 76, 60, 0);
+            }
+        }
+
+        .floating-btn {
+            animation: pulse 2s infinite;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.15);
+            animation: none;
+        }
+
+        /* Footer icon hover animation */
+        .footer-icon {
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .footer-icon:hover {
+            transform: translateY(-4px) scale(1.1);
+            filter: drop-shadow(0 0 10px #E74C3C);
+        }
+
+        /* Fade-in on scroll */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation link underline animation */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #E74C3C;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Enhanced card styling */
+        .card-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        /* Button hover effect */
+        .card-link {
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease;
+        }
+
+        .card-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: #E74C3C;
+            transition: width 0.3s ease;
+        }
+
+        .card-link:hover::after {
+            width: 100%;
+        }
+
+        /* Map overlay enhancement */
+        .map-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3));
+            backdrop-filter: blur(2px);
+        }
+
+        /* Subtle animated background pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(231, 76, 60, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            z-index: -1;
+        }
+
+        /* Enhanced hero section */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 229, 229, 0.7));
+        }
+
+        /* Card content enhancement */
+        .card-content {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover .card-content {
+            transform: translateY(-5px);
+        }
+
+        /* Custom animations for the WhatsApp buttons */
+        .whatsapp-container:hover .whatsapp-branches {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .whatsapp-container:hover .branch-btn:nth-child(1) {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            transition-delay: 0.1s;
+        }
+
+        .whatsapp-container:hover .branch-btn:nth-child(2) {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            transition-delay: 0.2s;
+        }
+
+        .whatsapp-container:hover .branch-btn:nth-child(3) {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            transition-delay: 0.2s;
+        }
+
+        /* Pulse animation for main button */
+        @keyframes ping {
+
+            75%,
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Subtle background pattern -->
+    <div class="bg-pattern"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="assets/logo.png" alt="Shoprite Logo" id="nav-logo">
+            </a>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="index.html" class="nav-link hover:text-[#E74C3C]">Home</a>
+                <a href="test2.html#collection" class="nav-link hover:text-[#E74C3C]">Collection</a>
+                <a href="index.html#lookbook" class="nav-link hover:text-[#E74C3C]">Lookbook</a>
+                <a href="index.html#mission" class="nav-link hover:text-[#E74C3C]">Mission</a>
+                <a href="contact.html" class="nav-link active text-[#E74C3C] font-semibold">Contact</a>
+                <a href="index.html#products-feed" class="nav-link hover:text-[#E74C3C]">Shop</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative flex flex-col items-center justify-center text-center py-24 overflow-hidden">
+        <div class="absolute inset-0 hero-gradient animate-pulse"></div>
+        <h1 class="hero-title relative text-5xl sm:text-6xl font-black text-[#111] mb-4 glow">
+            Reach the <span class="text-[#E74C3C]">Future</span> of Fashion.
+        </h1>
+        <p class="hero-sub text-gray-600 text-lg max-w-2xl relative">
+            Step into our world of innovation — contact us directly or visit our futuristic showroom in Surat.
+        </p>
+    </section>
+
+    <!-- Contact Cards -->
+    <section class="py-20 px-4 bg-white">
+        <div class="container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Address -->
+            <div class="contact-card p-8 rounded-xl text-center fade-section">
+                <div class="card-content">
+                    <div class="flex justify-center mb-4">
+                        <div class="card-icon w-10 h-10 text-[#E74C3C]">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5s-3 1.343-3 3 1.343 3 3 3z" />
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.428 15.341A8 8 0 106.6 15.341L12 21l7.428-5.659z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-[#E74C3C]">Our Showroom</h3>
+                    <p class="text-gray-700">New City Mall, Store L01<br>Surat, Gujarat 395003</p>
+                    <a href="https://maps.google.com/?q=Shoprite+New+City+Mall+Surat" target="_blank"
+                        class="card-link mt-4 text-[#E74C3C] font-semibold">View on Map →</a>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div class="contact-card p-8 rounded-xl text-center fade-section">
+                <div class="card-content">
+                    <div class="flex justify-center mb-4">
+                        <div class="card-icon w-10 h-10 text-[#E74C3C]">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16v16H4z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M22 6l-10 7L2 6" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-[#E74C3C]">Email Us</h3>
+                    <p class="text-gray-700">info@shoprite-fashion.com</p>
+                    <a href="mailto:info@shoprite-fashion.com" class="card-link mt-4 text-[#E74C3C] font-semibold">Send
+                        Email →</a>
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="contact-card p-8 rounded-xl text-center fade-section">
+                <div class="card-content">
+                    <div class="flex justify-center mb-4">
+                        <div class="card-icon w-10 h-10 text-[#E74C3C]">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.86 19.86 0 01-8.63-3.1 19.51 19.51 0 01-6-6A19.86 19.86 0 012 4.18A2 2 0 014 2h3a2 2 0 012 1.72" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-[#E74C3C]">Call Us</h3>
+                    <p class="text-gray-700">+91 98765 43210</p>
+                    <a href="tel:+919876543210" class="card-link mt-4 text-[#E74C3C] font-semibold">Call Now →</a>
+                </div>
+            </div>
+
+            <!-- Hours -->
+            <div class="contact-card p-8 rounded-xl text-center fade-section">
+                <div class="card-content">
+                    <div class="flex justify-center mb-4">
+                        <div class="card-icon w-10 h-10 text-[#E74C3C]">
+                            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2 text-[#E74C3C]">Business Hours</h3>
+                    <p class="text-gray-700">Mon–Sat: 10 AM – 8 PM<br>Sunday Closed</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Map -->
+    <section class="px-4 pb-24 fade-section">
+        <div class="container mx-auto max-w-5xl relative overflow-hidden rounded-2xl shadow-xl border border-gray-200">
+            <iframe src="https://www.google.com/maps?q=New+City+Mall,+Surat,+Gujarat,+India&output=embed" width="100%"
+                height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            <div
+                class="map-overlay absolute inset-0 flex items-center justify-center text-white text-lg font-semibold opacity-100 hover:opacity-0 transition">
+                Tap to explore map</div>
+        </div>
+    </section>
+    <!-- Floating WhatsApp CTA Button (Animated) -->
+    <div class="whatsapp-container fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50">
+        <!-- Branch Buttons (Hidden by default) -->
+        <div
+            class="whatsapp-branches absolute bottom-full right-0 mb-4 opacity-0 invisible transition-all duration-300 transform translate-y-4">
+            <div class="flex flex-col space-y-3">
+                <!-- Branch 1 -->
+                <a href="https://wa.me/919876543210?text=Hey,%20I%20have%20some%20query,%20can%20we%20chat"
+                    target="_blank"
+                    class="branch-btn flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 transform scale-90 opacity-0 translate-x-4 whitespace-nowrap">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+                    </svg>
+                    <span>Branch 1</span>
+                </a>
+
+                <!-- Branch 2 -->
+                <a href="https://wa.me/911234567890?text=Hey,%20I%20have%20some%20query,%20can%20we%20chat"
+                    target="_blank"
+                    class="branch-btn flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 transform scale-90 opacity-0 translate-x-4 whitespace-nowrap">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+                    </svg>
+                    <span>Branch 2</span>
+                </a>
+                <!-- Branch 3 -->
+                <a href="https://wa.me/919876543210?text=Hey,%20I%20have%20some%20query,%20can%20we%20chat"
+                    target="_blank"
+                    class="branch-btn flex items-center bg-green-500 hover:bg-green-600 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 transform scale-90 opacity-0 translate-x-4 whitespace-nowrap">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+                    </svg>
+                    <span>Branch 3</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main WhatsApp Button -->
+        <a href="https://wa.me/919876543210?text=Hey,%20I%20have%20some%20query,%20can%20we%20chat" target="_blank"
+            class="main-whatsapp-btn relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 z-10"
+            aria-label="Chat with us on WhatsApp">
+            <!-- WhatsApp Icon SVG -->
+            <svg class="w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+            </svg>
+
+            <!-- Animated Pulsing Ring -->
+            <div class="absolute inset-0 rounded-full bg-green-400 opacity-30 animate-ping"></div>
+        </a>
+    </div>
+
+
+    <!-- END Floating WhatsApp CTA Button -->
+
+
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 tracking-wide">
+                Follow us on
+            </h3>
+
+            <!-- Social Icons -->
+            <div class="flex justify-center space-x-10 mb-6">
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/shoprite" target="_blank"
+                    class="footer-icon text-gray-400 hover:text-[#E74C3C]">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                        <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+                    </svg>
+                </a>
+
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/shoprite" target="_blank"
+                    class="footer-icon text-gray-400 hover:text-[#E74C3C]">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                    </svg>
+                </a>
+
+                <!-- YouTube -->
+                <a href="https://www.youtube.com/@shoprite" target="_blank"
+                    class="footer-icon text-gray-400 hover:text-[#E74C3C]">
+                    <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M19.615 3.184A2.994 2.994 0 0021.5 5.67C22 7.172 22 12 22 12s0 4.828-.5 6.33a2.994 2.994 0 01-1.885 2.486C18.037 21.5 12 21.5 12 21.5s-6.037 0-7.615-.684A2.994 2.994 0 012.5 18.33C2 16.828 2 12 2 12s0-4.828.5-6.33a2.994 2.994 0 011.885-2.486C5.963 2.5 12 2.5 12 2.5s6.037 0 7.615.684zM10 8.5v7l6-3.5-6-3.5z" />
+                    </svg>
+                </a>
+            </div>
+
+            <p>&copy; 2025 <span class="font-semibold text-gray-800">SHOPRITE Fashion</span>. Crafted for the Future.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // reveal animation on scroll
+        const fadeEls = document.querySelectorAll('.fade-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

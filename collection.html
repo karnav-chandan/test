@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection | SHOPRITE Future Fashion</title>
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #ffffff 40%, #f9f9f9 100%);
+            color: #111111;
+            overflow-x: hidden;
+        }
+
+        /* Gradient text logo */
+        .text-logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #E74C3C, #FFD700, #E74C3C);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s linear infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* Navigation link underline animation */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #E74C3C;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Hero animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-sub {
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        /* Section title styling */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: #E74C3C;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Card hover effect */
+        .collection-card {
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+            height: 100%;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(231, 76, 60, 0.2);
+        }
+
+        .collection-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .collection-card:hover .card-image {
+            transform: scale(1.05);
+        }
+
+        /* Card image effect */
+        .card-image {
+            transition: transform 0.6s ease;
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        /* Card overlay */
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .overlay-title {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .overlay-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        /* Category navigation */
+        .category-nav {
+            position: sticky;
+            top: 80px;
+            z-index: 40;
+            background-color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 50px;
+            padding: 5px;
+            margin-bottom: 2rem;
+        }
+
+        .category-btn {
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+
+        .category-btn:hover {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #E74C3C;
+        }
+
+        .category-btn.active {
+            background-color: #E74C3C;
+            color: white;
+        }
+
+        /* Fade-in on scroll */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animated background elements */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .bg-animation span {
+            position: absolute;
+            display: block;
+            border-radius: 50%;
+            background: rgba(231, 76, 60, 0.1);
+            animation: float 20s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Individual floating elements with different sizes and positions */
+        .bg-animation span:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 20s;
+        }
+
+        .bg-animation span:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            left: 20%;
+            animation-delay: 2s;
+            animation-duration: 25s;
+        }
+
+        .bg-animation span:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            left: 35%;
+            animation-delay: 4s;
+            animation-duration: 22s;
+        }
+
+        .bg-animation span:nth-child(4) {
+            width: 30px;
+            height: 30px;
+            left: 50%;
+            animation-delay: 0s;
+            animation-duration: 30s;
+        }
+
+        .bg-animation span:nth-child(5) {
+            width: 70px;
+            height: 70px;
+            left: 65%;
+            animation-delay: 3s;
+            animation-duration: 28s;
+        }
+
+        .bg-animation span:nth-child(6) {
+            width: 50px;
+            height: 50px;
+            left: 80%;
+            animation-delay: 5s;
+            animation-duration: 24s;
+        }
+
+        .bg-animation span:nth-child(7) {
+            width: 90px;
+            height: 90px;
+            left: 90%;
+            animation-delay: 1s;
+            animation-duration: 26s;
+        }
+
+        .bg-animation span:nth-child(8) {
+            width: 35px;
+            height: 35px;
+            left: 25%;
+            animation-delay: 7s;
+            animation-duration: 32s;
+        }
+
+        .bg-animation span:nth-child(9) {
+            width: 65px;
+            height: 65px;
+            left: 75%;
+            animation-delay: 6s;
+            animation-duration: 29s;
+        }
+
+        .bg-animation span:nth-child(10) {
+            width: 45px;
+            height: 45px;
+            left: 40%;
+            animation-delay: 8s;
+            animation-duration: 23s;
+        }
+
+        /* Geometric shapes animation */
+        .geometric-shape {
+            position: absolute;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid #E74C3C;
+            animation: triangleFloat 15s infinite ease-in-out;
+        }
+
+        @keyframes triangleFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+
+        .square {
+            width: 40px;
+            height: 40px;
+            background-color: #E74C3C;
+            animation: squareFloat 18s infinite ease-in-out;
+        }
+
+        @keyframes squareFloat {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(15deg);
+            }
+        }
+
+        .circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #E74C3C;
+            animation: circleFloat 20s infinite ease-in-out;
+        }
+
+        @keyframes circleFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-25px) scale(1.1);
+            }
+        }
+
+        /* Section divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(231, 76, 60, 0.3), transparent);
+            margin: 3rem 0;
+        }
+        .nav-logo {
+            height: 40px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Scrolled Logo Size */
+        .main-header.scrolled .nav-logo {
+            height: 30px;
+            /* width: 38px; */
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Animated background elements -->
+    <div class="bg-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Geometric shapes -->
+    <div class="geometric-shape triangle" style="top: 15%; left: 5%;"></div>
+    <div class="geometric-shape square" style="top: 40%; left: 85%;"></div>
+    <div class="geometric-shape circle" style="top: 70%; left: 15%;"></div>
+    <div class="geometric-shape triangle" style="top: 30%; left: 75%;"></div>
+    <div class="geometric-shape square" style="top: 60%; left: 60%;"></div>
+    <div class="geometric-shape circle" style="top: 80%; left: 40%;"></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <a href="index.html" class="flex items-center space-x-3">
+                <img src="assets/logo.png" alt="Shoprite Logo" class="nav-logo">
+            </a>
+            <div class="hidden md:flex space-x-8 font-medium">
+                <a href="index.html" class="nav-link active text-[#E74C3C]">Home</a>
+                <a href="collection.html" class="nav-link active text-[#E74C3C] font-semibold">Collection</a>
+                <a href="index.html#lookbook" class="nav-link hover:text-[#E74C3C]">Lookbook</a>
+                <a href="index.html#mission" class="nav-link hover:text-[#E74C3C]">Mission</a>
+                <a href="contact.html" class="nav-link hover:text-[#E74C3C]">Contact</a>
+                <a href="index.html#products-feed" class="nav-link hover:text-[#E74C3C]">Shop</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative flex flex-col items-center justify-center text-center py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-100 to-[#ffe5e5] animate-pulse"></div>
+        <h1 class="hero-title relative text-5xl sm:text-6xl font-black text-[#111] mb-4">
+            Our <span class="text-[#E74C3C]">Collections</span>
+        </h1>
+        <p class="hero-sub text-gray-600 text-lg max-w-2xl relative">
+            Explore our curated collections organized by category for your convenience.
+        </p>
+    </section>
+
+    <!-- Category Navigation -->
+    <section class="py-6 px-4 bg-white sticky top-16 z-40">
+        <div class="container mx-auto max-w-4xl">
+            <div class="category-nav flex flex-wrap justify-center gap-2 md:gap-4">
+                <button class="category-btn active" data-category="saree">Saree</button>
+                <button class="category-btn" data-category="women">Women</button>
+                <button class="category-btn" data-category="men">Men</button>
+                <button class="category-btn" data-category="kids">Kids</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Saree Collection Section -->
+    <section id="saree" class="collection-section py-12 px-4 bg-gray-50 fade-section">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="section-title text-3xl font-bold text-center">Saree Collection</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+                Discover our exquisite range of sarees that blend traditional craftsmanship with modern design elements.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Saree Card 1 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/saree1/600/400.jpg" alt="Silk Saree" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Silk Elegance</h3>
+                            <p class="overlay-subtitle">Traditional luxury</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Silk Elegance Collection</h3>
+                        <p class="text-gray-600 mb-4">Pure silk sarees with intricate zari work for special occasions.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Saree Card 2 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/saree2/600/400.jpg" alt="Designer Saree" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Designer Creations</h3>
+                            <p class="overlay-subtitle">Contemporary style</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Designer Creations</h3>
+                        <p class="text-gray-600 mb-4">Modern designer sarees with innovative drapes and patterns.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Saree Card 3 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/saree3/600/400.jpg" alt="Casual Saree" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Casual Comfort</h3>
+                            <p class="overlay-subtitle">Everyday elegance</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Casual Comfort</h3>
+                        <p class="text-gray-600 mb-4">Lightweight and comfortable sarees perfect for daily wear.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Women's Collection Section -->
+    <section id="women" class="collection-section py-12 px-4 bg-white fade-section">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="section-title text-3xl font-bold text-center">Women's Collection</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+                Explore our versatile range of women's clothing designed for comfort, style, and confidence.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Women's Card 1 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/women1/600/400.jpg" alt="Ethnic Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Ethnic Essence</h3>
+                            <p class="overlay-subtitle">Traditional charm</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ethnic Essence</h3>
+                        <p class="text-gray-600 mb-4">Salwar suits, kurtis, and ethnic dresses for every occasion.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Women's Card 2 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/women2/600/400.jpg" alt="Western Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Western Wonder</h3>
+                            <p class="overlay-subtitle">Modern fashion</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Western Wonder</h3>
+                        <p class="text-gray-600 mb-4">Dresses, tops, and jeans that blend comfort with contemporary style.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Women's Card 3 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/women3/600/400.jpg" alt="Fusion Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Fusion Fashion</h3>
+                            <p class="overlay-subtitle">Best of both worlds</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fusion Fashion</h3>
+                        <p class="text-gray-600 mb-4">Indo-western outfits that combine traditional and modern elements.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Men's Collection Section -->
+    <section id="men" class="collection-section py-12 px-4 bg-gray-50 fade-section">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="section-title text-3xl font-bold text-center">Men's Collection</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+                Discover our range of men's clothing that combines classic styles with modern trends.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Men's Card 1 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/men1/600/400.jpg" alt="Formal Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Formal Focus</h3>
+                            <p class="overlay-subtitle">Professional style</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Formal Focus</h3>
+                        <p class="text-gray-600 mb-4">Suits, shirts, and trousers for the modern professional.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Men's Card 2 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/men2/600/400.jpg" alt="Casual Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Casual Comfort</h3>
+                            <p class="overlay-subtitle">Relaxed style</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Casual Comfort</h3>
+                        <p class="text-gray-600 mb-4">T-shirts, jeans, and casual wear for everyday comfort.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Men's Card 3 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/men3/600/400.jpg" alt="Ethnic Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Ethnic Elegance</h3>
+                            <p class="overlay-subtitle">Traditional charm</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ethnic Elegance</h3>
+                        <p class="text-gray-600 mb-4">Kurtas, sherwanis, and ethnic wear for special occasions.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Kids Collection Section -->
+    <section id="kids" class="collection-section py-12 px-4 bg-white fade-section">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="section-title text-3xl font-bold text-center">Kids Collection</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+                Explore our fun and comfortable range of kids' clothing designed for play and style.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kids Card 1 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/kids1/600/400.jpg" alt="Girls Collection" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Girls Delight</h3>
+                            <p class="overlay-subtitle">Pretty and playful</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Girls Delight</h3>
+                        <p class="text-gray-600 mb-4">Dresses, tops, and ethnic wear for young fashionistas.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/kids1/600/400.jpg" alt="Girls Collection" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Girls Delight</h3>
+                            <p class="overlay-subtitle">Pretty and playful</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Girls Delight</h3>
+                        <p class="text-gray-600 mb-4">Dresses, tops, and ethnic wear for young fashionistas.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Kids Card 2 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/kids2/600/400.jpg" alt="Boys Collection" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Boys Adventure</h3>
+                            <p class="overlay-subtitle">Cool and comfortable</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Boys Adventure</h3>
+                        <p class="text-gray-600 mb-4">Shirts, t-shirts, and ethnic wear for active young boys.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+
+                <!-- Kids Card 3 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/kids3/600/400.jpg" alt="Infant Collection" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Infant Care</h3>
+                            <p class="overlay-subtitle">Gentle and soft</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Infant Care</h3>
+                        <p class="text-gray-600 mb-4">Soft and comfortable clothing for newborns and infants.</p>
+                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 text-center text-gray-500 text-sm">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4 tracking-wide">
+                Follow us on
+            </h3>
+            <div class="flex justify-center space-x-10 mb-6">
+                <a href="https://www.instagram.com/shoprite" target="_blank" class="text-gray-400 hover:text-[#E74C3C] transition">
+                    <i class="fab fa-instagram text-2xl"></i>
+                </a>
+                <a href="https://www.facebook.com/shoprite" target="_blank" class="text-gray-400 hover:text-[#E74C3C] transition">
+                    <i class="fab fa-facebook-f text-2xl"></i>
+                </a>
+                <a href="https://www.youtube.com/@shoprite" target="_blank" class="text-gray-400 hover:text-[#E74C3C] transition">
+                    <i class="fab fa-youtube text-2xl"></i>
+                </a>
+            </div>
+            <p>&copy; 2025 <span class="font-semibold text-gray-800">SHOPRITE Fashion</span>. Crafted for the Future.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Category navigation functionality
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const collectionSections = document.querySelectorAll('.collection-section');
+
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                
+                // Scroll to the selected section
+                const targetSection = document.getElementById(category);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update active button based on scroll position
+        window.addEventListener('scroll', function() {
+            let current = '';
+            collectionSections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            categoryBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-category') === current) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+
+        // reveal animation on scroll
+        const fadeEls = document.querySelectorAll('.fade-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); }
+            });
+        }, { threshold: 0.1 });
+        fadeEls.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOPRITE Fashion - Premium Indian Clothing Brand</title>
+
+    <!-- Favicon Link -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+    <!-- SEO Meta Tags for Visibility -->
+    <meta name="description"
+        content="SHOPRITE Future Fashion: India's leading sustainable clothing brand and showroom. Explore the Synthesis collection for engineered, modern wear. Keywords: shoprite fashion, clothing brand in surat, contemporary fashion India.">
+    <meta name="keywords"
+        content="shoprite, shoprite fashion, clothing brand in surat, clothing showroom near me, contemporary fashion India, FW25, Synthesis Collection, sustainable fashion">
+
+    <!-- JSON-LD Schema Markup for Local SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "SHOPRITE Future Fashion",
+      "image": "assets/logo.jpeg",
+      "url": "https://shoprite-retail.com", 
+      "telephone": "+91-9876543210",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "New City Mall, Store L01",
+        "addressLocality": "Surat",
+        "addressRegion": "Gujarat",
+        "postalCode": "395003",
+        "addressCountry": "IN"
+      },
+      "priceRange": "$$$",
+      "servesCuisine": "Clothing, Apparel, Sustainable Fashion",
+      "hasMap": "https://maps.google.com/?q=Shoprite+Surat+Gujarat",
+      "brand": {
+          "@type": "Brand",
+          "name": "SHOPRITE Fashion",
+          "slogan": "Quality Forged by Decades of Craft."
+      }
+    }
+    </script>
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Define the clean light palette */
+        :root {
+            --color-primary-bg: #FFFFFF;
+            /* White background */
+            --color-secondary-bg: #F5F5F5;
+            /* Very light gray for sections */
+            --color-text-dark: #111111;
+            /* Deep black for text/contrast */
+            --color-accent: #E74C3C;
+            /* Modern Red Accent */
+        }
+
+        /* Custom styles for background and font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary-bg);
+            color: var(--color-text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Accent Styles */
+        .text-accent {
+            color: var(--color-accent);
+        }
+
+        .bg-accent {
+            background-color: var(--color-accent);
+        }
+
+        .border-accent {
+            border-color: var(--color-accent);
+        }
+
+        /* --- Header Styles (Shrink Effect) --- */
+
+        /* Initial state of the header */
+        .main-header {
+            transition: padding 0.3s ease-in-out, height 0.3s ease-in-out, box-shadow 0.3s ease;
+            height: 72px;
+            /* Fixed height for initial state */
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Scrolled state: applied via JavaScript */
+        .main-header.scrolled {
+            height: 56px;
+            /* Smaller height when scrolled */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Logo size transition - applies to both image and text container */
+        .brand-logo-group {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Default Logo Size */
+        .nav-logo {
+            height: 40px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Scrolled Logo Size */
+        .main-header.scrolled .nav-logo {
+            height: 30px;
+            /* width: 38px; */
+        }
+
+        /* Default Text Logo Size */
+
+        /* Primary Button Style (White button with black text/red hover) */
+        .btn-primary {
+            border: 2px solid var(--color-text-dark);
+            background-color: transparent;
+            color: var(--color-text-dark);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background-color: var(--color-text-dark);
+            color: var(--color-primary-bg);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Secondary Button/Link Style */
+        .btn-secondary:hover {
+            color: var(--color-accent);
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        /* Navigation Link Style */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Pseudo-element for the sliding underline */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease-out;
+            border-radius: 1px;
+        }
+
+        /* Hover state: Make the underline appear */
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- Image Card Animation (3D Tilt) --- */
+        .collection-card {
+            overflow: hidden;
+            background-color: var(--color-secondary-bg);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid #e5e7eb;
+            box-shadow: none;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .collection-card:hover {
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            transform: scale(1.03) rotateX(1deg) rotateY(-1deg) translateZ(5px);
+        }
+
+        /* Ensure the cyclic image transition is fast and simple for the src swap */
+        .js-cyclic-image {
+            transition: opacity 0.2s ease-in-out;
+            image-orientation: from-image;
+            
+        }
+
+        /* For the 3D tilt effect, we still want the image to move */
+        .collection-card:hover .js-cyclic-image {
+            transform: scale(1.1);
+        }
+
+        /* Neon Glow Effect for Collection Links (Section 2) */
+        .neon-link {
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+            color: var(--color-accent);
+            background-color: transparent;
+            border: 1px solid #c0c0c0;
+            transition: all 0.4s ease-in-out, border-color 0s linear 0.4s;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        /* The Animated Black Fill Bar (Pseudo-element) */
+        .neon-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-text-dark);
+            /* Black fill color */
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            z-index: -1;
+        }
+
+        /* Hover state on the parent card triggers the link's styling */
+        .collection-card:hover .neon-link {
+            color: var(--color-primary-bg);
+            /* White text */
+
+            /* NEON SHADOW EFFECT */
+            box-shadow:
+                0 0 5px rgba(231, 76, 60, 0.6),
+                0 0 15px rgba(231, 76, 60, 0.4),
+                0 0 30px rgba(231, 76, 60, 0.2);
+
+            border-color: var(--color-accent);
+            transition: all 0.4s ease-in-out;
+            transform: scale(1.05) translateY(-2px);
+        }
+
+        /* Hover state on the pseudo-element triggers the fill animation */
+        .collection-card:hover .neon-link::before {
+            transform: scaleX(1);
+        }
+
+        /* Custom geometric shape for the mission image */
+        .mission-visual {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        /* --- Mission Card Animation (Section 4) --- */
+
+        /* Base styling for the Mission Card container */
+        .mission-card {
+            background: var(--color-primary-bg);
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: box-shadow 0.5s ease-in-out;
+        }
+
+        /* The Animated Pseudo-Element Border/Glow */
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Spinning gradient using accent colors */
+            background: conic-gradient(transparent 0%,
+                    rgba(231, 76, 60, 0.5) 20%,
+                    transparent 40%,
+                    rgba(231, 76, 60, 0.5) 60%,
+                    transparent 80%,
+                    rgba(231, 76, 60, 0.5) 100%);
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: spin 6s linear infinite;
+        }
+
+        /* On hover, reveal the spinning gradient */
+        .mission-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Spin Keyframes */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Content layer to keep text/images above the spinning border */
+        .mission-card-content {
+            position: relative;
+            z-index: 10;
+            background: var(--color-primary-bg);
+            /* Match body background */
+            border-radius: 12px;
+            padding: 3rem;
+            /* Same as p-12 in Tailwind */
+        }
+
+        /* --- Hero Carousel Animation --- */
+        @keyframes scroll-x {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .scrolling-carousel-track {
+            display: flex;
+            width: 200%;
+            animation: scroll-x 40s linear infinite;
+        }
+
+        .scrolling-carousel-track:hover {
+            animation-play-state: paused;
+        }
+
+        .scrolling-carousel-track img {
+            min-width: 20%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 0.5s ease;
+        }
+
+        /* --- Lookbook Styles (Section 3) --- */
+        .lookbook-item {
+            position: relative;
+            height: 100vh;
+            /* Full viewport height for dramatic effect */
+            /* Enable simple Parallax effect */
+            background-attachment: fixed;
+            /* NEW LINE for Parallax */
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* Added transition for the hover zoom */
+            transition: background-size 1.5s ease-out;
+        }
+
+        /* Hover effect: Subtle zoom on the background image */
+        .lookbook-item:hover {
+            /* Increase the background size slightly for a zoom effect */
+            background-size: 105% auto;
+        }
+
+        /* New class for the text glow effect */
+        .caption-glow {
+            transition: text-shadow 0.3s ease;
+        }
+
+        /* Neon/Glow effect on hover */
+        .lookbook-item:hover .caption-glow {
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px var(--color-accent),
+                0 0 30px var(--color-accent);
+        }
+
+        .lookbook-caption {
+            /* Large text effect */
+            font-size: 8vw;
+            line-height: 0.9;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Mobile adjustment for lookbook text */
+        @media (max-width: 768px) {
+            .lookbook-caption {
+                font-size: 14vw;
+            }
+        }
+
+        /* --- Lookbook CTA Spring Effect (Section 3) --- */
+        .cta-lookbook-btn {
+            /* Custom cubic-bezier for a spring/pop effect */
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border-color: white !important;
+        }
+
+        .cta-lookbook-btn:hover {
+            transform: scale(1.1) rotate(-1deg);
+            /* Aggressive pop and rotation */
+            /* WHITE NEON GLOW EFFECT */
+            box-shadow:
+                0 0 10px rgba(255, 255, 255, 0.7),
+                0 0 25px rgba(255, 255, 255, 0.4),
+                0 0 40px rgba(255, 255, 255, 0.1);
+            background-color: var(--color-text-dark);
+            /* Dark background for better contrast with white glow */
+            color: white;
+            /* White text */
+        }
+
+        .cta-lookbook-btn:active {
+            transform: scale(0.95);
+            /* Sinks in slightly on click */
+        }
+
+
+        /* --- Product Card Styles (Section 6) --- */
+        .product-card {
+            transition: all 0.3s ease-in-out;
+            border: 1px solid #e5e7eb;
+            background-color: var(--color-primary-bg);
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .product-card-image {
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-card-image {
+            transform: scale(1.05);
+        }
+
+
+        /* --- Preloader Styles --- */
+        .loader-fill {
+            /* This div starts off-screen and animates across the bar */
+            animation: loading-bar 2.5s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+        }
+
+        @keyframes loading-bar {
+            0% {
+                transform: translateX(-100%) scaleX(0.1);
+            }
+
+            50% {
+                transform: translateX(100%) scaleX(0.6);
+            }
+
+            100% {
+                transform: translateX(-100%) scaleX(0.1);
+            }
+        }
+
+        /* --- Modal Styles (Kept hidden but structure remains for future use) --- */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.8);
+            transition: opacity 0.3s ease-out;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            transform: translateY(20px);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .modal-overlay.open .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Map Container Custom Styling */
+        .map-container {
+            height: 400px;
+            /* Fixed height for the map iframe/placeholder */
+            background-color: #E0E0E0;
+            /* Light gray to simulate map texture */
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .map-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* Dark overlay for text readability */
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-container:hover .map-overlay {
+            opacity: 0;
+            /* Hide overlay on hover if map was real */
+        }
+
+        /* --- Footer Social Icon Animation --- */
+        .social-icon-wrapper {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+            filter: drop-shadow(0 0 0 rgba(231, 76, 60, 0.5));
+            /* Base shadow */
+        }
+
+        /* On hover, increase size, rotate slightly, and add glow */
+        .social-icon-wrapper:hover {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--color-accent);
+            /* Change icon color */
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.7));
+            /* Glowing effect */
+        }
+
+        /* --- Floating CTA Pulse Animation (NEW) --- */
+        @keyframes pulse-whatsapp {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-cta {
+            /* WhatsApp Green color: #25D366 */
+            background-color: #25D366;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: pulse-whatsapp 2s infinite;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .whatsapp-cta:hover {
+            transform: scale(1.1);
+            animation: none;
+            /* Stop pulsing on hover */
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 3. Tablet/Desktop Override (3 images visible at a time) */
+        @media (min-width: 768px) {
+            #hero-track>img {
+                /* Critical for desktop: 33.333% width of the visible container */
+                flex-basis: calc(100% / 3);
+                min-width: calc(100% / 3);
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <!-- 0. Preloader/Loading Screen (High z-index to cover everything) -->
+    <div id="preloader"
+        class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-500 opacity-100">
+        <!-- Reusing the brand logo style for prominence -->
+        <h1 class="text-5xl font-black mb-4 uppercase tracking-[0.1em]">
+            <span class="text-accent">SHOP</span>RITE
+        </h1>
+        <!-- Animated Loading Bar -->
+        <div class="loader-bar h-1 w-40 rounded-full bg-gray-200 overflow-hidden">
+            <div class="loader-fill h-full w-1/4 bg-accent"></div>
+        </div>
+    </div>
+    <!-- END Preloader -->
+
+    <!-- Navigation Bar (Updated for shrink effect) -->
+    <header id="main-header"
+        class="main-header sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full">
+
+            <!-- Logo/Brand Group -->
+            <a href="#" class="flex items-center space-x-3 group brand-logo-group">
+                <div class="nav-logo overflow-hidden rounded-md">
+                    <img src="assets/logo.png"
+                        onerror="this.onerror=null; this.src='https://placehold.co/50x40/E74C3C/FFFFFF?text=SR'"
+                        alt="Shoprite Future Fashion Brand Logo"
+                        class="w-full h-full object-cover transition group-hover:scale-110">
+                </div>
+            </a>
+            <!-- END Logo/Brand Group -->
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-10 text-base font-medium">
+                <a href="index.html" class="nav-link text-black pb-1">Home</a>
+                <a href="#collection" class="nav-link text-black pb-1">Collection</a>
+                <a href="#lookbook" class="nav-link text-black pb-1">Lookbook</a>
+                <a href="#mission" class="nav-link text-black pb-1">Mission</a>
+                <a href="#contact" class="nav-link text-black pb-1">Retail</a>
+                <a href="#products-feed" class="nav-link text-black pb-1">Shop</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button"
+                class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                aria-label="Toggle Menu">
+                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#collection"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Collection</a>
+                <a href="#lookbook"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Lookbook</a>
+                <a href="#mission"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Mission</a>
+                <a href="#contact"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Retail</a>
+                <a href="#products-feed"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Shop</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 1. Hero Section - AUTO-SCROLLING CAROUSEL -->
+        <section id="hero" class="relative overflow-hidden h-[70vh] sm:h-[85vh] border-b border-gray-200">
+
+            <!-- CSS Auto-Scrolling Image Track -->
+            <div class="h-full w-full flex scrolling-carousel-track" id="hero-track">
+                <!-- Fallback/Mock images -->
+                <img src="/assets/hero-img/hero-img1.jpg" alt="Synthesis Collection Look 1, Futuristic black coat"
+                    class="transition">
+                <img src="/assets/hero-img/hero-img2.jpg" alt="Synthesis Collection Look 2, red accent jacket"
+                    class="transition">
+                <img src="/assets/hero-img/hero-img3.jpg" alt="Synthesis Collection Look 3, minimalist white garment"
+                    class="transition">
+                <img src="/assets/hero-img/hero-img4.jpg" alt="Synthesis Collection Look 4, modular trousers"
+                    class="transition">
+                <img src="/assets/hero-img/hero-img5.jpg" alt="Synthesis Collection Look 5, grey structured top"
+                    class="transition">
+                <img src="/assets/hero-img/hero-img6.jpg" alt="Synthesis Collection Look 6, grey structured top"
+                    class="transition">
+                <img src="assets/hero-img/hero-img7.jpg" alt="Synthesis Collection Look 7, grey structured top"
+                    class="transition">
+                <img src="assets/hero-img/hero-img8.jpg" alt="Synthesis Collection Look 8, grey structured top"
+                    class="transition">
+                <img src="/assets/hero-img/hero-img9.jpg" alt="Synthesis Collection Look 9, grey structured top"
+                    class="transition">
+                <img src="/assets/hero-img/hero-img10.jpg" alt="Synthesis Collection Look 10, grey structured top"
+                    class="transition">
+            </div>
+
+            <!-- Floating Text/CTA Overlay -->
+            <div
+                class="absolute inset-0 flex flex-col justify-end p-8 sm:p-16 bg-gradient-to-t from-black/60 to-transparent">
+                <!-- UPDATED TAGLINE -->
+                <p class="text-xl uppercase tracking-[0.2em] mb-3 text-white font-light">Shoprite Fashion: Excellence
+                    Born from Craft.</p>
+                <h1 class="text-6xl sm:text-8xl lg:text-9xl font-black leading-none mb-8 text-white">
+                    <span class="text-accent">SYNTH</span>ESIS.
+                </h1>
+                <a href="/collection.html"
+                    class="btn-primary inline-block font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out bg-white text-black hover:bg-black hover:text-white self-start">
+                    Explore New Arrivals
+                </a>
+            </div>
+        </section>
+
+        <!-- 2. Collection Showcase Section -->
+        <section id="collection" class="py-20 sm:py-24 bg-white px-4">
+            <div class="container mx-auto">
+                <!-- H2 remains a strong keyword target -->
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-4 text-color-text-dark">FW25: The Synthesis
+                    Collection - By Shoprite Retail</h2>
+                <!-- UPDATED SUB-TEXT to include Men, Women, Kids, and Sarees -->
+                <h4 style="text-align: center;">
+                    Shoprite Retail is the premier textile manufacturer in Gujarat, specializing in the high-volume
+                    production and export of authentic Indian sarees and traditional wear for global retail chains and
+                    large wholesalers. We transition your sourcing needs from negotiation to reliable supply, offering
+                    certified quality directly from our factory floor.
+                    With decades of manufacturing expertise, the Synthesis collection showcases our complete range for
+                    Men, Women, and Kids. Explore our core segments, including our specialty in traditional sarees, from
+                    India's innovative clothing brand.
+                </h4>
+
+                <!-- Editorial Layout (Restructured to 1 + 3 grid) -->
+                <div class="space-y-8 md:space-y-12">
+
+                    <!-- ROW 1: FEATURE - SAREES & DRAPES -->
+
+
+                    <!-- ROW 2: CORE DEMOGRAPHICS (3-Column Grid) -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+                        <!--  ROW 1: FEATURE - SAREES & DRAPES -->
+                        <a href="collection.html" class="collection-card rounded-xl group">
+                            <!-- Image Container with data for JS cycling -->
+                            <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
+                                     "assets/collection/coll-home/saree1.jpg",
+                                     "assets/collection/coll-home/saree2.jpg",
+                                     "assets/collection/coll-home/saree3.jpg"
+                                 ]'>
+                                <img src="https://placehold.co/600x800/555555/E74C3C?text=Saree Collection"
+                                    alt="Contemporary Men's Wear Collection"
+                                    class="js-cyclic-image w-full h-full object-contain">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-1 text-color-text-dark">Premium Traditional wear:
+                                    Saree & Drapes</h3>
+                                <!-- NEON GLOW EFFECT APPLIED HERE -->
+                                <p
+                                    class="text-sm uppercase tracking-widest inline-block px-3 py-1 rounded-full neon-link">
+                                    View Collection &rarr;
+                                </p>
+                            </div>
+                        </a>
+                        <!-- Item 2: MEN'S WEAR -->
+                        <a href="/collection.html" class="collection-card rounded-xl group">
+                            <!-- Image Container with data for JS cycling -->
+                            <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
+                                     "assets/collection/coll-home/men1.jpg",
+                                     "assets/collection/coll-home/men2.jpg",
+                                     "assets/collection/coll-home/men3.jpg"
+                                 ]'>
+                                <img src="https://placehold.co/600x800/555555/E74C3C?text=MENS WEAR"
+                                    alt="Contemporary Men's Wear Collection"
+                                    class="js-cyclic-image w-full h-full object-contain">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-1 text-color-text-dark">Contemporary Men's Wear</h3>
+                                <!-- NEON GLOW EFFECT APPLIED HERE -->
+                                <p
+                                    class="text-sm uppercase tracking-widest inline-block px-3 py-1 rounded-full neon-link">
+                                    View All Men's Apparel &rarr;
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Item 3: KIDS' & CASUALS -->
+                        <a href="/collection.html" class="collection-card rounded-xl group">
+                            <!-- Image Container with data for JS cycling -->
+                            <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
+                                     "assets/collection/coll-home/kid1.jpg",
+                                     "assets/collection/coll-home/kid2.jpg",
+                                     "assets/collection/coll-home/kid3.jpg"
+                                 ]'>
+                                <img src="https://placehold.co/600x800/AAAAAA/E74C3C?text=KIDS WEAR"
+                                    alt="Shoprite Kids' and Casual Wear"
+                                    class="js-cyclic-image w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-1 text-color-text-dark">Kids' & Casual Wear</h3>
+                                <!-- NEON GLOW EFFECT APPLIED HERE -->
+                                <p
+                                    class="text-sm uppercase tracking-widest inline-block px-3 py-1 rounded-full neon-link">
+                                    Shop All Casuals &rarr;
+                                </p>
+                            </div>
+                        </a>
+
+                        <!-- Item 4: WOMEN'S MODERN APPAREL (New dedicated card) -->
+                        <a href="/collection.html" class="collection-card rounded-xl group">
+                            <!-- Image Container with data for JS cycling -->
+                            <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
+                                     "assets/collection/coll-home/women1.jpg",
+                                     "assets/collection/coll-home/women2.jpg",
+                                     "assets/collection/coll-home/women3.jpg"
+                                 ]'>
+                                <img src="https://placehold.co/600x800/808080/E74C3C?text=WOMEN WEAR"
+                                    alt="Shoprite Modern Women's Apparel Collection"
+                                    class="js-cyclic-image w-full h-full object-contain">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-semibold mb-1 text-color-text-dark">Modern Women's Apparel</h3>
+                                <!-- NEON GLOW EFFECT APPLIED HERE -->
+                                <p
+                                    class="text-sm uppercase tracking-widest inline-block px-3 py-1 rounded-full neon-link">
+                                    Shop Formal & Casuals &rarr;
+                                </p>
+                            </div>
+                        </a>
+
+                    </div>
+                    <!-- END ROW 2 -->
+
+                </div>
+                <!-- END Editorial Layout -->
+            </div>
+        </section>
+
+        <!-- 3. Lookbook / Full-Width Visual Section (Simplified to one item) -->
+        <section id="lookbook" class="bg-black py-0">
+            <div class="mx-auto">
+                <div class="text-center py-16 bg-white">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-color-text-dark tracking-tight">
+                        The Lookbook
+                    </h2>
+                    <p class="text-gray-500 max-w-xl mx-auto">
+                        A single visual narrative that defines the core aesthetic of our new collection: precision,
+                        architecture, and enduring quality.
+                    </p>
+                </div>
+
+                <!-- LOOKBOOK ITEM 1: LINEAR FORM (The only one now) -->
+                <div class="lookbook-item bg-gray-900" style="background-image: url('/assets/lookbook.jpg');">
+                    <div class="absolute inset-0 bg-black/40"></div>
+                    <div class="relative text-center p-8 sm:p-16">
+                        <span
+                            class="text-white text-lg sm:text-xl font-light uppercase tracking-widest block mb-4 opacity-90">01
+                            / FW25 Feature</span>
+                        <h3 class="lookbook-caption text-white uppercase font-black caption-glow">
+                            Quality.<br>Craft.<br><span class="text-accent">Legacy.</span>
+                        </h3>
+                        <!-- UPDATED BUTTON WITH NEW CTA CLASS AND REMOVED TAILWIND HOVER CLASSES -->
+                        <a href="/showcase.html"
+                            class="cta-lookbook-btn inline-block mt-6 border-2 border-white text-white font-medium py-3 px-8 rounded-full">
+                            View Full Gallery
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Final Lookbook CTA -->
+                <div class="text-center py-16 bg-white">
+                    <p class="text-gray-700 text-lg mb-6 max-w-2xl mx-auto">
+                        Ready to see the full collection? Download the complete high-resolution lookbook PDF.
+                    </p>
+                    <a href="/file"
+                        class="btn-primary inline-block font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out">
+                        Download Lookbook (PDF)
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- 4. Mission/Brand Identity Section -->
+        <section id="mission" class="py-20 sm:py-24 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <!-- MISSION CARD CONTAINER WITH NEW ANIMATION CLASS -->
+                <div class="mission-card">
+                    <div class="mission-card-content grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+                        <!-- Image Placeholder with unique shape (CSS clip-path) -->
+                        <div class="h-96 w-full rounded-md overflow-hidden bg-gray-100 shadow-xl relative">
+                            <img src="assets/brand_visual.jpg" alt="Shoprite Fashion Brand Ethos Visual"
+                                class="w-full h-full object-cover mission-visual transition duration-700 hover:scale-110">
+                            <!-- UPDATED MISSION TAG -->
+                            <div
+                                class="absolute top-4 left-4 p-2 bg-black text-white text-xs font-mono uppercase tracking-widest rounded-sm">
+                                CRAFT_EXCELLENCE</div>
+                        </div>
+
+                        <!-- Text Content -->
+                        <div class="p-4">
+                            <h2 class="text-3xl font-semibold uppercase tracking-widest mb-4 text-accent">Our Ethos</h2>
+                            <!-- UPDATED MISSION HEADLINE -->
+                            <h3 class="text-5xl font-bold mb-6 text-color-text-dark leading-tight">
+                                Quality Forged by Decades of Craft.
+                            </h3>
+                            <!-- UPDATED MISSION BODY: Integrated the four pillars (Integrity, Growth, Collaboration, Purpose) -->
+                            <p class="text-gray-600 leading-relaxed mb-8 border-l-4 border-accent pl-4">
+                                Shoprite is leveraging decades of experience as a trusted manufacturer based in Surat.
+                                Our approach is defined by four pillars: Integrity in sourcing and production; a
+                                commitment to Perpetual Growth through innovation. Collaborative Impact with our
+                                partners; and a Purpose-Driven focus on enduring quality. As a rapidly growing
+                                premium clothing brand in India, our mission is to deliver unmatched excellence
+                                directly to you. Our inaugural collection defines the intersection of heritage craft and
+                                engineering efficiency. This Lookbook is a singular visual narrative affirming our
+                                commitment to three core pillars: precision, architecture, and enduring quality.
+                            </p>
+                            <a href="/about.html"
+                                class="btn-secondary text-color-text-dark font-semibold transition duration-300 flex items-center group/link opacity-80 w-fit text-lg">
+                                Read the Full Manifesto
+                                <span
+                                    class="ml-2 transition-transform duration-300 group-hover/link:translate-x-1">&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Featured Products Feed (New Section) -->
+        <section id="products-feed" class="py-20 sm:py-24 bg-color-secondary-bg px-4">
+            <div class="container mx-auto">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 text-color-text-dark tracking-tighter text-center">
+                    Featured Products
+                </h2>
+                <p class="text-gray-600 text-lg mb-12 max-w-3xl mx-auto text-center">
+                    Shop the current season's most sought-after apparel, available now through our Surat showroom.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
+
+                    <!-- Product 1: The Linear Coat -->
+                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                        <div class="h-72 md:h-80 overflow-hidden">
+                            <img src="assets/collection/coll-home/hype1.webp"
+                                alt="Men's Linear Form Structured Coat"
+                                class="product-card-image w-full h-full object-contain">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold truncate mb-1">Linear Form Coat</h3>
+                            <p class="text-gray-500 text-sm">Men's Apparel</p>
+                            <!-- <p class="text-xl font-bold mt-2 text-accent">₹ 4,999</p> -->
+                        </div>
+                    </a>
+
+                    <!-- Product 2: Crimson Drape Saree -->
+                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                        <div class="h-72 md:h-80 overflow-hidden">
+                            <img src="assets/collection/coll-home/hype2.avif"
+                                alt="Women's Crimson Drape Saree" class="product-card-image w-full h-full object-contain">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold truncate mb-1">Crimson Drape Saree</h3>
+                            <p class="text-gray-500 text-sm">Traditional Wear</p>
+                            <!-- <p class="text-xl font-bold mt-2 text-accent">₹ 7,500</p> -->
+                        </div>
+                    </a>
+
+                    <!-- Product 3: Modular Trousers -->
+                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                        <div class="h-72 md:h-80 overflow-hidden">
+                            <img src="assets/collection/coll-home/hype3.jpg"
+                                alt="Unisex Modular Utility Trousers"
+                                class="product-card-image w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold truncate mb-1">Modular Trousers</h3>
+                            <p class="text-gray-500 text-sm">Unisex / Kids</p>
+                            <!-- <p class="text-xl font-bold mt-2 text-accent">₹ 2,899</p> -->
+                        </div>
+                    </a>
+
+                    <!-- Product 4: Structured Knit Dress -->
+                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                        <div class="h-72 md:h-80 overflow-hidden">
+                            <img src="assets/collection/coll-home/hype4.webp"
+                                alt="Women's Structured Knit Midi Dress"
+                                class="product-card-image w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold truncate mb-1">Structured Knit Dress</h3>
+                            <p class="text-gray-500 text-sm">Women's Apparel</p>
+                            <!-- <p class="text-xl font-bold mt-2 text-accent">₹ 3,499</p> -->
+                        </div>
+                    </a>
+
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="/collection.html"
+                        class="btn-primary inline-block font-bold py-3 px-10 rounded-full transition duration-300 ease-in-out">
+                        View Complete Shop
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. Retail/Contact Section - Optimized for local search (clothing showroom near me) -->
+        <section id="contact" class="py-20 sm:py-32 bg-color-secondary-bg px-4">
+            <div class="container mx-auto">
+                <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 text-color-text-dark tracking-tighter text-center">
+                    Find Your Shoprite Fashion Showroom.
+                </h2>
+                <p class="text-gray-600 text-lg mb-12 max-w-3xl mx-auto text-center">
+                    Discover the latest **Shoprite Fashion** collection in person. Our first flagship location in
+                    **Surat** is now open at the New City Mall. If you're searching for a **clothing showroom near me**,
+                    start with our retail map.
+                </p>
+
+                <!-- Map and Contact Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Map Container (Lg: 2/3 width) -->
+                    <div class="lg:col-span-2 map-container">
+                        <!-- Placeholder for Map (A real map iframe would go here) -->
+                        <div class="map-overlay">
+                            [Map Placeholder: Surat Flagship Location]
+                        </div>
+                    </div>
+
+                    <!-- Contact Details (Lg: 1/3 width) -->
+                    <div class="lg:col-span-1 bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+                        <h3 class="text-2xl font-bold mb-6 border-b pb-3 text-color-text-dark">Contact & Appointments
+                        </h3>
+
+                        <div class="space-y-6">
+                            <div>
+                                <p class="text-xs uppercase font-semibold text-gray-500 tracking-wider mb-1">Surat
+                                    Flagship Address</p>
+                                <p class="text-lg font-medium text-color-text-dark">New City Mall, Store L01<br>Surat,
+                                    Gujarat 395003</p>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase font-semibold text-gray-500 tracking-wider mb-1">General
+                                    Inquiries</p>
+                                <a href="mailto:info@shoprite-fashion.com"
+                                    class="text-lg font-medium text-accent hover:underline">info@shoprite-fashion.com</a>
+                            </div>
+                            <div>
+                                <p class="text-xs uppercase font-semibold text-gray-500 tracking-wider mb-1">
+                                    Phone/WhatsApp</p>
+                                <a href="tel:+919876543210" class="text-lg font-medium text-accent hover:underline">+91
+                                    98765 43210</a>
+                            </div>
+                            <div>
+                                <a href="/contact.html" class="text-lg font-medium text-accent hover:underline">Contact
+                                    Us</a>
+                            </div>
+                        </div>
+
+                        <!-- REMOVED: Schedule Private Viewing Button was here -->
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Floating WhatsApp CTA Button (NEW) -->
+    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-cta fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 
+              w-14 h-14 sm:w-16 sm:h-16 
+              rounded-full flex items-center justify-center text-white 
+              hover:shadow-xl" aria-label="Chat with us on WhatsApp">
+        <!-- WhatsApp Icon SVG (Same as used in footer) -->
+        <svg class="w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+        </svg>
+    </a>
+    <!-- END Floating WhatsApp CTA Button -->
+
+
+    <!-- Footer - Enhanced for Social Media Links with Animation -->
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            <!-- Social Icons (Using animated inline SVGs) -->
+            <div class="flex justify-center space-x-6 mb-6">
+
+                <!-- 1. WhatsApp -->
+                <a href="https://wa.me/919876543210" target="_blank" class="social-icon-wrapper text-gray-400 p-2"
+                    aria-label="WhatsApp">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+                    </svg>
+                </a>
+
+                <!-- 2. Instagram (Kept from previous version) -->
+                <a href="#" class="social-icon-wrapper text-gray-400 p-2" aria-label="Follow us on Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.5 2C4.463 2 2 4.463 2 7.5v9C2 19.537 4.463 22 7.5 22h9c3.037 0 5.5-2.463 5.5-5.5v-9c0-3.037-2.463-5.5-5.5-5.5h-9zM4 7.5C4 5.57 5.57 4 7.5 4h9C18.43 4 20 5.57 20 7.5v9c0 1.93-1.57 3.5-3.5 3.5h-9C5.57 20 4 18.43 4 16.5v-9zM12 8a4 4 0 100 8 4 4 0 000-8zm0 2a2 2 0 110 4 2 2 0 010-4zM17.5 7.5a1 1 0 100 2 1 1 0 000-2z" />
+                    </svg>
+                </a>
+
+                <!-- 3. YouTube -->
+                <a href="#" class="social-icon-wrapper text-gray-400 p-2" aria-label="Follow us on YouTube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 00-1.94-2.19C18.9 4 12 4 12 4s-6.9 0-8.6.23a2.78 2.78 0 00-1.94 2.19C2 8.16 2 12 2 12s0 3.84.46 5.58c.32 1.25 1.21 2.14 2.46 2.46C6.9 20 12 20 12 20s5.1 0 6.8-.23c1.25-.32 2.14-1.21 2.46-2.46.46-1.74.46-5.58.46-5.58s0-3.84-.46-5.58zM10 15V9l5.5 3-5.5 3z" />
+                    </svg>
+                </a>
+
+                <!-- 4. Facebook -->
+                <a href="#" class="social-icon-wrapper text-gray-400 p-2" aria-label="Follow us on Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22 12C22 6.477 17.523 2 12 2S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.929V12h2.929V9.309c0-2.909 1.769-4.521 4.348-4.521 1.285 0 2.138.095 2.433.138V7.39h-1.448c-1.411 0-1.688.67-1.688 1.65v2.21h3.098l-.504 2.89h-2.594v6.988C18.343 21.128 22 16.991 22 12z" />
+                    </svg>
+                </a>
+            </div>
+            <p>&copy; 2024 SHOPRITE Fashion. All rights reserved. Quality Wear by Design. A premium **clothing brand
+                from Surat**, India.</p>
+        </div>
+    </footer>
+
+    <!-- 7. Private Viewing Modal (Kept hidden and unused, but structure remains) -->
+    <div id="private-viewing-modal" class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4">
+
+        <!-- Modal Content Card -->
+        <div
+            class="modal-content relative bg-white w-full max-w-lg mx-auto rounded-xl shadow-2xl p-6 sm:p-10 border border-gray-100">
+
+            <!-- Close Button -->
+            <button id="close-modal-btn"
+                class="absolute top-3 right-3 p-2 text-gray-400 hover:text-color-text-dark transition duration-200"
+                aria-label="Close Modal">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+
+            <h3 class="text-3xl font-bold mb-4 text-color-text-dark">Schedule Your Private Viewing</h3>
+            <p class="text-gray-600 mb-8">
+                Reserve an exclusive, one-on-one consultation at our Surat flagship showroom to view the collection.
+            </p>
+
+            <!-- Scheduling Form -->
+            <form id="schedule-form" class="space-y-5">
+
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Full Name</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent transition duration-150" />
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent transition duration-150" />
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number
+                            (Required)</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="+91 98765 43210"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent transition duration-150" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Preferred Date</label>
+                    <input type="date" id="date" name="date" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent transition duration-150" />
+                </div>
+
+                <div>
+                    <label for="interest" class="block text-sm font-medium text-gray-700 mb-1">Area of Interest</label>
+                    <select id="interest" name="interest"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-accent focus:border-accent transition duration-150">
+                        <option value="synthesis">Synthesis FW25 Collection</option>
+                        <option value="sarees">Premium Sarees & Drapes</option>
+                        <option value="mens">Men's Contemporary Wear</option>
+                        <option value="general">General Consultation</option>
+                    </select>
+                </div>
+
+                <button type="submit"
+                    class="bg-accent text-white font-bold py-3 px-6 rounded-full w-full hover:bg-red-700 transition duration-300 shadow-lg mt-4">
+                    Confirm Appointment
+                </button>
+            </form>
+
+            <!-- Confirmation Message Box (Hidden by default) -->
+            <div id="confirmation-message"
+                class="hidden absolute inset-0 bg-white/95 backdrop-blur-sm flex items-center justify-center rounded-xl p-6 text-center">
+                <div>
+                    <h4 class="text-2xl font-bold mb-3 text-accent">Request Submitted!</h4>
+                    <p class="text-lg text-gray-700">We have received your private viewing request and will contact you
+                        shortly to confirm the details.</p>
+                </div>
+            </div>
+
+        </div>
+        <!-- END Modal Content Card -->
+    </div>
+    <!-- END Modal -->
+
+
+    <!-- JavaScript for Mobile Menu, Smooth Scroll, Preloader, and Image Cycling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mainHeader = document.getElementById('main-header');
+            const preloader = document.getElementById('preloader');
+            const SCROLL_THRESHOLD = 50; // Pixels scrolled before shrinking
+            const CYCLE_INTERVAL_MS = 2000; // 2 seconds
+
+            // MODAL ELEMENTS (Kept for future functionality, but the trigger button is removed)
+            const modalOverlay = document.getElementById('private-viewing-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const scheduleForm = document.getElementById('schedule-form');
+            const confirmationMessage = document.getElementById('confirmation-message');
+
+            // --- FUNCTIONS ---
+
+            // Function to close the modal (no longer needed, but kept for cleanup)
+            const closeModal = () => {
+                modalOverlay.classList.remove('open');
+                document.body.style.overflow = ''; // Restore scrolling
+            };
+
+            // Function to open the modal (no longer needed, but kept for cleanup)
+            // const openModal = () => {
+            //     modalOverlay.classList.add('open');
+            //     document.body.style.overflow = 'hidden'; // Disable background scrolling
+            //     confirmationMessage.classList.add('hidden'); // Reset confirmation
+            //     scheduleForm.reset(); // Reset form fields
+            // };
+
+            // --- EVENT LISTENERS ---
+
+            // 1. Mobile Menu Toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // 2. Hide Mobile Menu when a link is clicked & Smooth Scroll
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // 3. Header Shrink Effect on Scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > SCROLL_THRESHOLD) {
+                    mainHeader.classList.add('scrolled');
+                } else {
+                    mainHeader.classList.remove('scrolled');
+                }
+            });
+            if (window.scrollY > SCROLL_THRESHOLD) {
+                mainHeader.classList.add('scrolled');
+            }
+
+            // 4. Preloader Logic: Hide the preloader once the entire page is loaded
+            window.addEventListener('load', () => {
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 500);
+                }
+            });
+
+            // 5. Product Card Image Cycling Logic
+            const imageCyclers = document.querySelectorAll('.js-image-cycler');
+            imageCyclers.forEach(container => {
+                const imageElement = container.querySelector('.js-cyclic-image');
+                // Correctly parsing the data-image-set attribute
+                try {
+                    const imageSet = JSON.parse(container.dataset.imageSet);
+                    let currentIndex = 0;
+
+                    setInterval(() => {
+                        currentIndex = (currentIndex + 1) % imageSet.length;
+
+                        imageElement.classList.add('opacity-0');
+
+                        setTimeout(() => {
+                            imageElement.src = imageSet[currentIndex];
+                            // Update Alt Text (simplified for mock data)
+                            imageElement.alt = imageElement.alt.replace(/\d+$/, currentIndex + 1);
+
+                            imageElement.classList.remove('opacity-0');
+                        }, 200);
+
+                    }, CYCLE_INTERVAL_MS);
+                } catch (e) {
+                    console.error("Error parsing image set data:", e);
+                }
+            });
+            // END Image Cycling Logic
+
+
+            // 6. Modal Logic (Disabled since the trigger button is gone)
+
+            // // Open Modal
+            // openModalBtn.addEventListener('click', openModal);
+
+            // Close Modal via X button
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Close Modal by clicking on the dark backdrop (overlay)
+            modalOverlay.addEventListener('click', (e) => {
+                // Check if the click occurred directly on the overlay itself, not the content
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            // Handle Form Submission (Preventing actual submission for this mock-up)
+            scheduleForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Simulate form submission delay
+                setTimeout(() => {
+                    // Show confirmation message
+                    confirmationMessage.classList.remove('hidden');
+
+                    // Automatically close modal after 3 seconds
+                    setTimeout(closeModal, 3000);
+
+                }, 500);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
