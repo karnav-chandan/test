@@ -1,11 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
+    <title>About SHOPRITE Fashion - Our Story, Vision & Commitment</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta name="description"
+        content="Learn about SHOPRITE Future Fashion: India's leading sustainable clothing brand. Discover our commitment to craft, quality, and our vision for modern Indian apparel.">
+    <meta name="keywords"
+        content="shoprite, shoprite fashion, about us, clothing brand story, vision, commitment, surat, manufacturing, ethical fashion India">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Define the clean light palette */
+        :root {
+            --color-primary-bg: #FFFFFF;
+            /* White background */
+            --color-secondary-bg: #F5F5F5;
+            /* Very light gray for sections */
+            --color-text-dark: #111111;
+            /* Deep black for text/contrast */
+            --color-accent: #E74C3C;
+            /* Modern Red Accent */
+        }
+
+        /* Custom styles for background and font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-primary-bg);
+            color: var(--color-text-dark);
+            scroll-behavior: smooth;
+        }
+
+        /* Accent Styles */
+        .text-accent {
+            color: var(--color-accent);
+        }
+
+        .bg-accent {
+            background-color: var(--color-accent);
+        }
+
+        .border-accent {
+            border-color: var(--color-accent);
+        }
+
+        /* --- Header Styles (Shrink Effect) --- */
+        .main-header {
+            transition: padding 0.3s ease-in-out, height 0.3s ease-in-out, box-shadow 0.3s ease;
+            height: 72px;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .main-header.scrolled {
+            height: 56px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .brand-logo-group {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .nav-logo {
+            height: 40px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .main-header.scrolled .nav-logo {
+            height: 30px;
+        }
+
+        /* Primary Button Style */
+        .btn-primary {
+            border: 2px solid var(--color-text-dark);
+            background-color: transparent;
+            color: var(--color-text-dark);
+            transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background-color: var(--color-text-dark);
+            color: var(--color-primary-bg);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Secondary Button/Link Style */
+        .btn-secondary:hover {
+            color: var(--color-accent);
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        /* Navigation Link Style */
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent);
+            transition: width 0.3s ease-out;
+            border-radius: 1px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- Section 1: Hero Banner for About Page --- */
+        .about-hero {
+            height: 60vh;
+            background-image: url('assets/brand_visual.jpg'); /* Placeholder image */
+            background-size: cover;
+            background-position: center 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 5px solid var(--color-accent);
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        }
+
+        /* --- NEW: Style for Who We Are Section --- */
+        .who-we-are-bg {
+            /* Example: A very subtle textile pattern background */
+            background-image: url('assets/pattern-textile.svg'), linear-gradient(180deg, var(--color-primary-bg) 0%, var(--color-secondary-bg) 100%); 
+            /* You can replace 'assets/pattern-textile.svg' with your own subtle texture or remove the first image for a plain color fade */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Optional: Add a subtle overlay for text contrast if the image is busy */
+        .who-we-are-bg::before {
+             content: '';
+             position: absolute;
+             inset: 0;
+             background-color: rgba(255, 255, 255, 0.7); /* Light overlay for contrast */
+             z-index: 1;
+        }
+        
+        .who-we-are-bg > * {
+            position: relative;
+            z-index: 2; /* Ensures content is above the overlay */
+        }
+
+        /* --- Section 3: Pillars (Modern Card Design) --- */
+        .pillar-card {
+            position: relative;
+            padding: 2.5rem;
+            background: var(--color-primary-bg);
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            border-left: 5px solid transparent;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--color-accent);
+        }
+        
+        /* Animated Accent Line Effect */
+        .line-accent {
+            height: 4px;
+            width: 0;
+            background-color: var(--color-accent);
+            transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            margin-bottom: 1rem;
+        }
+        
+        .section-header:hover .line-accent {
+            width: 80px;
+        }
+
+        /* Floating WhatsApp CTA Button (INHERITED) */
+        @keyframes pulse-whatsapp {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .whatsapp-cta {
+            background-color: #25D366;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            animation: pulse-whatsapp 2s infinite;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .whatsapp-cta:hover {
+            transform: scale(1.1);
+            animation: none;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Social Icon Animation (INHERITED) */
+        .social-icon-wrapper {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+            filter: drop-shadow(0 0 0 rgba(231, 76, 60, 0.5));
+        }
+
+        .social-icon-wrapper:hover {
+            transform: scale(1.2) rotate(5deg);
+            color: var(--color-accent);
+            filter: drop-shadow(0 0 10px rgba(231, 76, 60, 0.7));
+        }
+
+    </style>
 </head>
-<body>
-    
+
+<body class="antialiased">
+
+    <div id="preloader"
+        class="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-white transition-opacity duration-500 opacity-0 pointer-events-none">
+    </div>
+
+    <header id="main-header"
+        class="main-header sticky top-0 z-50 bg-white bg-opacity-95 backdrop-blur-sm border-b border-gray-100">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-full">
+
+            <a href="index.html" class="flex items-center space-x-3 group brand-logo-group">
+                <div class="nav-logo overflow-hidden rounded-md">
+                    <img src="assets/logo.png"
+                        onerror="this.onerror=null; this.src='https://placehold.co/50x40/E74C3C/FFFFFF?text=SR'"
+                        alt="Shoprite Future Fashion Brand Logo"
+                        class="w-full h-full object-cover transition group-hover:scale-110">
+                </div>
+            </a>
+
+            <div class="hidden md:flex space-x-10 text-base font-medium">
+                <a href="index.html" class="nav-link text-black pb-1">Home</a>
+                <a href="collection.html" class="nav-link text-black pb-1">Collection</a>
+                <a href="showcase.html" class="nav-link text-black pb-1">Lookbook</a>
+                <a href="about.html" class="nav-link text-accent pb-1">About Us</a>
+                <a href="contact.html" class="nav-link text-black pb-1">Contact Us</a>
+            </div>
+
+            <button id="mobile-menu-button"
+                class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-black"
+                aria-label="Toggle Menu">
+                <svg class="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
+                </svg>
+            </button>
+        </nav>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="index.html#collection"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Collection</a>
+                <a href="index.html#lookbook"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Lookbook</a>
+                <a href="#who-we-are"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-accent hover:bg-gray-100">About
+                    Us</a>
+                <a href="index.html#contact"
+                    class="nav-link block px-3 py-2 rounded-md text-base font-medium text-black hover:bg-gray-100">Retail</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="about-hero">
+            <div class="relative z-10 p-8">
+                <h1
+                    class="text-4xl sm:text-7xl lg:text-8xl font-black text-white uppercase tracking-tighter leading-snug">
+                    <span class="text-accent">Our</span> Story.
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-200 mt-4 font-light max-w-2xl mx-auto">
+                    Crafting Tomorrow's Fashion with Decades of Manufacturing <span class="text-accent">Legacy</span>.
+                </p>
+            </div>
+        </section>
+
+
+        <section id="who-we-are" class="py-20 sm:py-32 who-we-are-bg px-4">
+            <div class="container mx-auto max-w-6xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    
+                    <div class="lg:sticky lg:top-24 section-header">
+                        <div class="line-accent"></div>
+                        <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-color-text-dark tracking-tighter">
+                            WHO ARE WE?
+                        </h2>
+                        <h3 class="text-xl font-medium text-gray-600 mb-8">
+                            From Factory Floor to Future Fashion: Shoprite Retail's Evolution.
+                        </h3>
+                    </div>
+
+                    <div>
+                        <article class="space-y-8 text-lg text-gray-700 leading-relaxed">
+                            <p>
+                                **SHOPRITE Retail** is a Surat-based textile powerhouse, evolving from a manufacturer with
+                                decades of experience into India’s new premium clothing brand. Our roots are firmly set
+                                in high-volume, quality-certified production, specializing in authentic Indian sarees,
+                                drapes, and a wide range of apparel for global retail chains.
+                            </p>
+                            <p>
+                                The creation of **SHOPRITE Fashion** is a natural extension of our manufacturing
+                                expertise. It represents the intersection of our heritage craft with modern engineering
+                                efficiency. We are not just a brand; we are a direct-to-consumer initiative built on the
+                                foundation of unmatched **Integrity** and **Perpetual Growth**.
+                            </p>
+                            <p>
+                                Our design ethos, embodied in the **Synthesis Collection**, focuses on architectural
+                                precision, enduring quality, and a contemporary Indian aesthetic. By controlling the entire
+                                supply chain—from raw material sourcing to the final stitch—we guarantee exceptional value
+                                and superior product quality for Men, Women, and Kids.
+                            </p>
+                            <a href="index.html#mission" class="btn-secondary text-accent font-semibold flex items-center group/link w-fit text-lg">
+                                Read Our Mission Statement <span class="ml-2 transition-transform duration-300 group-hover/link:translate-x-1">→</span>
+                            </a>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="vision" class="py-20 sm:py-32 bg-color-secondary-bg px-4 border-t border-b border-gray-200">
+            <div class="container mx-auto max-w-6xl text-center">
+                <div class="section-header max-w-4xl mx-auto">
+                    <div class="line-accent mx-auto"></div>
+                    <h2 class="text-4xl sm:text-6xl font-black mb-6 uppercase tracking-tighter text-color-text-dark">
+                        The <span class="text-accent">Vision</span> Ahead.
+                    </h2>
+                    <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
+                        To be the definitive voice of contemporary Indian fashion, trusted worldwide for its quality,
+                        sustainability, and manufacturing excellence.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <div class="p-6 bg-white rounded-xl shadow-md border-t-4 border-accent">
+                        <h4 class="text-2xl font-bold mb-3 text-color-text-dark">Global Reach</h4>
+                        <p class="text-gray-600">
+                            Expand our design and manufacturing capabilities to establish SHOPRITE as a recognized
+                            global exporter of Indian textiles, focusing on sustainable and ethical supply chain
+                            practices.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-xl shadow-md border-t-4 border-accent">
+                        <h4 class="text-2xl font-bold mb-3 text-color-text-dark">Innovation in Textile</h4>
+                        <p class="text-gray-600">
+                            Invest in R&D to blend traditional Indian weaving techniques with cutting-edge textile
+                            technology, creating apparel that is both durable and architecturally modern.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-xl shadow-md border-t-4 border-accent">
+                        <h4 class="text-2xl font-bold mb-3 text-color-text-dark">Conscious Design</h4>
+                        <p class="text-gray-600">
+                            Lead the industry in responsible manufacturing, minimizing waste and ensuring fair-wage,
+                            safe working conditions for every artisan and technician in our Surat facility.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="why-choose-us" class="py-20 sm:py-32 bg-color-primary-bg px-4">
+            <div class="container mx-auto max-w-6xl">
+                <div class="section-header text-center max-w-3xl mx-auto mb-16">
+                    <div class="line-accent mx-auto"></div>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-color-text-dark tracking-tighter">
+                        Why Choose SHOPRITE?
+                    </h2>
+                    <p class="text-xl text-gray-600">
+                        Our commitment is rooted in a fundamental belief that true luxury is defined by **quality,
+                        transparency, and enduring design**.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+
+                    <div class="pillar-card">
+                        <div class="text-accent mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.82 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.82 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.82-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.82-3.31 2.37-2.37a1.724 1.724 0 002.572-1.065z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3 text-color-text-dark">Direct Manufacturing Mastery</h4>
+                        <p class="text-gray-600">
+                            We own and operate our production facility in Surat, Gujarat. This vertical integration means
+                            unrivaled quality control, faster production cycles, and the ability to innovate without
+                            middle-man costs or compromise.
+                        </p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="text-accent mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3 text-color-text-dark">Enduring Quality Guarantee</h4>
+                        <p class="text-gray-600">
+                            Every garment, from our traditional sarees to the modern Synthesis line, passes stringent
+                            quality checks. We promise longevity and material excellence—our pieces are built to be
+                            wardrobe staples, not fast fashion items.
+                        </p>
+                    </div>
+
+                    <div class="pillar-card">
+                        <div class="text-accent mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-2.414-2.414A1 1 0 0015.586 6H7a2 2 0 00-2 2v11a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3 text-color-text-dark">Architectural Design</h4>
+                        <p class="text-gray-600">
+                            Our apparel is designed with a keen eye on linear form and architectural structure. We create
+                            modern silhouettes that respect traditional Indian craft, offering a unique and recognizable
+                            aesthetic.
+                        </p>
+                    </div>
+                    
+                    <div class="pillar-card">
+                        <div class="text-accent mb-3">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8V9a3 3 0 00-3-3H6a3 3 0 00-3 3v6a3 3 0 003 3h6a3 3 0 003-3v-1M4 16H3a1 1 0 01-1-1V9a1 1 0 011-1h1">
+                                </path>
+                            </svg>
+                        </div>
+                        <h4 class="text-2xl font-bold mb-3 text-color-text-dark">Best Value, Direct to You</h4>
+                        <p class="text-gray-600">
+                            By eliminating intermediaries, we offer premium materials and world-class craftsmanship at a
+                            transparent price point. You pay for the quality of the garment, not the chain of distribution.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 bg-color-secondary-bg border-t border-gray-200 text-center px-4">
+            <h3 class="text-3xl font-bold mb-4 text-color-text-dark">Ready to Experience the Quality?</h3>
+            <p class="text-lg text-gray-700 mb-6">Explore our latest collection or book a private viewing at our Surat flagship showroom.</p>
+            <div class="space-x-4">
+                <a href="index.html#collection"
+                    class="btn-primary inline-block font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out">
+                    View The Synthesis Collection
+                </a>
+                <a href="index.html#contact"
+                    class="inline-block font-bold py-3 px-8 rounded-full transition duration-300 ease-in-out bg-accent text-white hover:bg-red-700">
+                    Find Our Showroom
+                </a>
+            </div>
+        </section>
+
+
+    </main>
+
+    <a href="https://wa.me/918866840930" target="_blank" class="whatsapp-cta fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 
+              w-14 h-14 sm:w-16 sm:h-16 
+              rounded-full flex items-center justify-center text-white 
+              hover:shadow-xl" aria-label="Chat with us on WhatsApp">
+        <svg class="w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+        </svg>
+    </a>
+
+    <footer class="bg-white py-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://wa.me/918866840930" target="_blank" class="social-icon-wrapper text-gray-400 p-2"
+                    aria-label="WhatsApp">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.031 2C6.541 2 2.031 6.51 2.031 12c0 1.956.574 3.771 1.55 5.323L2 22.031l4.708-1.55c1.552.977 3.367 1.55 5.323 1.55 5.49 0 9.999-4.51 9.999-10S17.521 2 12.031 2zm.001 18c-1.688 0-3.267-.45-4.636-1.258l-.332-.197-3.41 1.127 1.15-3.322-.213-.342c-.85-1.37-1.306-2.955-1.306-4.66 0-4.305 3.504-7.809 7.809-7.809s7.809 3.504 7.809 7.809-3.504 7.809-7.809 7.809zM16.591 14.156c-.08-.13-.292-.208-.609-.364-.316-.156-1.87-.915-2.158-1.018-.288-.103-.497-.156-.705.156-.208.312-.806 1.018-.985 1.226-.179.208-.359.234-.668.078-.31-.156-1.265-.466-2.408-1.487-1.047-.915-1.748-2.083-1.956-2.408-.208-.312-.02-.48.136-.636.13-.13.292-.364.448-.543.156-.182.208-.312.312-.52.103-.208.052-.388-.026-.543-.078-.156-.705-1.696-.961-2.314-.24-.593-.497-.504-.668-.504-.182 0-.391-.026-.609-.026-.208 0-.543.078-.813.388-.27.312-1.03 1.002-1.03 2.441 0 1.44 1.056 2.82 1.209 3.029.156.208 2.071 3.23 4.977 4.542 2.905 1.31 2.905.875 3.435.813.53-.062 1.708-.69 1.956-1.353.249-.662.249-.78 0-.936-.001 0-.001 0 0-.001z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon-wrapper text-gray-400 p-2" aria-label="Follow us on Instagram">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.5 2C4.463 2 2 4.463 2 7.5v9C2 19.537 4.463 22 7.5 22h9c3.037 0 5.5-2.463 5.5-5.5v-9c0-3.037-2.463-5.5-5.5-5.5h-9zM4 7.5C4 5.57 5.57 4 7.5 4h9C18.43 4 20 5.57 20 7.5v9c0 1.93-1.57 3.5-3.5 3.5h-9C5.57 20 4 18.43 4 16.5v-9zM12 8a4 4 0 100 8 4 4 0 000-8zm0 2a2 2 0 110 4 2 2 0 010-4zM17.5 7.5a1 1 0 100 2 1 1 0 000-2z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon-wrapper text-gray-400 p-2" aria-label="Follow us on YouTube">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22.54 6.42a2.78 2.78 0 00-1.94-2.19C18.9 4 12 4 12 4s-6.9 0-8.6.23a2.78 2.78 0 00-1.94 2.19C2 8.16 2 12 2 12s0 3.84.46 5.58c.32 1.25 1.21 2.14 2.46 2.46C6.9 20 12 20 12 20s5.1 0 6.8-.23c1.25-.32 2.14-1.21 2.46-2.46.46-1.74.46-5.58.46-5.58s0-3.84-.46-5.58zM10 15V9l5.5 3-5.5 3z" />
+                    </svg>
+                </a>
+                <a href="#" class="social-icon-wrapper text-gray-400 p-2" aria-label="Follow us on Facebook">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M22 12C22 6.477 17.523 2 12 2S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878V14.89h-2.929V12h2.929V9.309c0-2.909 1.769-4.521 4.348-4.521 1.285 0 2.138.095 2.433.138V7.39h-1.448c-1.411 0-1.688.67-1.688 1.65v2.21h3.098l-.504 2.89h-2.594v6.988C18.343 21.128 22 16.991 22 12z" />
+                    </svg>
+                </a>
+            </div>
+            <p>© 2024 SHOPRITE Fashion. All rights reserved. Quality Wear by Design. A premium **clothing brand
+                from Surat**, India.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const mainHeader = document.getElementById('main-header');
+            const SCROLL_THRESHOLD = 50; 
+
+            // 1. Mobile Menu Toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // 2. Hide Mobile Menu when a link is clicked & Smooth Scroll
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (link.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // 3. Header Shrink Effect on Scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > SCROLL_THRESHOLD) {
+                    mainHeader.classList.add('scrolled');
+                } else {
+                    mainHeader.classList.remove('scrolled');
+                }
+            });
+            if (window.scrollY > SCROLL_THRESHOLD) {
+                mainHeader.classList.add('scrolled');
+            }
+
+            // Simple preloader removal logic
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.remove();
+                    }, 500);
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

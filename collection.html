@@ -10,7 +10,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -35,6 +35,7 @@
             0% {
                 background-position: 0% 50%;
             }
+
             100% {
                 background-position: 100% 50%;
             }
@@ -71,6 +72,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateY(0);
@@ -139,7 +141,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7));
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7));
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -227,12 +229,15 @@
                 transform: translateY(100vh) scale(0);
                 opacity: 0;
             }
+
             10% {
                 opacity: 0.4;
             }
+
             90% {
                 opacity: 0.4;
             }
+
             100% {
                 transform: translateY(-100vh) scale(1);
                 opacity: 0;
@@ -337,9 +342,12 @@
         }
 
         @keyframes triangleFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) rotate(0deg);
             }
+
             50% {
                 transform: translateY(-20px) rotate(10deg);
             }
@@ -353,9 +361,12 @@
         }
 
         @keyframes squareFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) rotate(0deg);
             }
+
             50% {
                 transform: translateY(-30px) rotate(15deg);
             }
@@ -370,9 +381,12 @@
         }
 
         @keyframes circleFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) scale(1);
             }
+
             50% {
                 transform: translateY(-25px) scale(1.1);
             }
@@ -384,6 +398,7 @@
             background: linear-gradient(to right, transparent, rgba(231, 76, 60, 0.3), transparent);
             margin: 3rem 0;
         }
+
         .nav-logo {
             height: 40px;
             transition: all 0.3s ease-in-out;
@@ -427,12 +442,12 @@
                 <img src="assets/logo.png" alt="Shoprite Logo" class="nav-logo">
             </a>
             <div class="hidden md:flex space-x-8 font-medium">
-                <a href="index.html" class="nav-link active text-[#E74C3C]">Home</a>
+                <a href="index.html" class="nav-link hover:text-[#E74C3C]">Home</a>
                 <a href="collection.html" class="nav-link active text-[#E74C3C] font-semibold">Collection</a>
-                <a href="index.html#lookbook" class="nav-link hover:text-[#E74C3C]">Lookbook</a>
-                <a href="index.html#mission" class="nav-link hover:text-[#E74C3C]">Mission</a>
-                <a href="contact.html" class="nav-link hover:text-[#E74C3C]">Contact</a>
-                <a href="index.html#products-feed" class="nav-link hover:text-[#E74C3C]">Shop</a>
+                <a href="showcase.html" class="nav-link hover:text-[#E74C3C]">Lookbook</a>
+                <a href="about.html" class="nav-link hover:text-[#E74C3C]">Mission</a>
+                <a href="contact.html" class="nav-link hover:text-[#E74C3C]">Contact Us</a>
+                <!-- <a href="index.html#products-feed" class="nav-link hover:text-[#E74C3C]">Shop</a> -->
             </div>
         </nav>
     </header>
@@ -452,6 +467,7 @@
     <section class="py-6 px-4 bg-white sticky top-16 z-40">
         <div class="container mx-auto max-w-4xl">
             <div class="category-nav flex flex-wrap justify-center gap-2 md:gap-4">
+                <button class="category-btn" data-category="latest">Latest</button>
                 <button class="category-btn active" data-category="saree">Saree</button>
                 <button class="category-btn" data-category="women">Women</button>
                 <button class="category-btn" data-category="men">Men</button>
@@ -460,6 +476,69 @@
         </div>
     </section>
 
+    <!-- Latest Collection Section -->
+    <section id="latest" class="collection-section py-12 px-4 bg-white fade-section">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="section-title text-3xl font-bold text-center">Women's Collection</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
+                Explore our versatile range of women's clothing designed for comfort, style, and confidence.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- latest Card 1 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/women1/600/400.jpg" alt="Ethnic Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Linear Form Coat</h3>
+                            <p class="overlay-subtitle">Men's Apparel</p>
+                        </div> 
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Ethnic Essence</h3>
+                        <p class="text-gray-600 mb-4">Salwar suits, kurtis, and ethnic dresses for every occasion.</p>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
+                    </div>
+                </div>
+
+                <!-- latest Card 2 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/women2/600/400.jpg" alt="Western Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Western Wonder</h3>
+                            <p class="overlay-subtitle">Modern fashion</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Western Wonder</h3>
+                        <p class="text-gray-600 mb-4">Dresses, tops, and jeans that blend comfort with contemporary
+                            style.</p>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
+                    </div>
+                </div>
+
+                <!-- latest Card 3 -->
+                <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="relative">
+                        <img src="https://picsum.photos/seed/women3/600/400.jpg" alt="Fusion Wear" class="card-image">
+                        <div class="card-overlay">
+                            <h3 class="overlay-title">Fusion Fashion</h3>
+                            <p class="overlay-subtitle">Best of both worlds</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Fusion Fashion</h3>
+                        <p class="text-gray-600 mb-4">Indo-western outfits that combine traditional and modern elements.
+                        </p>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
     <!-- Saree Collection Section -->
     <section id="saree" class="collection-section py-12 px-4 bg-gray-50 fade-section">
         <div class="container mx-auto max-w-6xl">
@@ -467,7 +546,7 @@
             <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
                 Discover our exquisite range of sarees that blend traditional craftsmanship with modern design elements.
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Saree Card 1 -->
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
@@ -480,15 +559,17 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Silk Elegance Collection</h3>
-                        <p class="text-gray-600 mb-4">Pure silk sarees with intricate zari work for special occasions.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <p class="text-gray-600 mb-4">Pure silk sarees with intricate zari work for special occasions.
+                        </p>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
 
                 <!-- Saree Card 2 -->
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="https://picsum.photos/seed/saree2/600/400.jpg" alt="Designer Saree" class="card-image">
+                        <img src="https://picsum.photos/seed/saree2/600/400.jpg" alt="Designer Saree"
+                            class="card-image">
                         <div class="card-overlay">
                             <h3 class="overlay-title">Designer Creations</h3>
                             <p class="overlay-subtitle">Contemporary style</p>
@@ -497,7 +578,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Designer Creations</h3>
                         <p class="text-gray-600 mb-4">Modern designer sarees with innovative drapes and patterns.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
 
@@ -513,7 +594,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Casual Comfort</h3>
                         <p class="text-gray-600 mb-4">Lightweight and comfortable sarees perfect for daily wear.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
             </div>
@@ -529,7 +610,7 @@
             <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
                 Explore our versatile range of women's clothing designed for comfort, style, and confidence.
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Women's Card 1 -->
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
@@ -543,7 +624,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Ethnic Essence</h3>
                         <p class="text-gray-600 mb-4">Salwar suits, kurtis, and ethnic dresses for every occasion.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
 
@@ -558,8 +639,9 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Western Wonder</h3>
-                        <p class="text-gray-600 mb-4">Dresses, tops, and jeans that blend comfort with contemporary style.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <p class="text-gray-600 mb-4">Dresses, tops, and jeans that blend comfort with contemporary
+                            style.</p>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
 
@@ -574,8 +656,9 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Fusion Fashion</h3>
-                        <p class="text-gray-600 mb-4">Indo-western outfits that combine traditional and modern elements.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <p class="text-gray-600 mb-4">Indo-western outfits that combine traditional and modern elements.
+                        </p>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
             </div>
@@ -591,7 +674,7 @@
             <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
                 Discover our range of men's clothing that combines classic styles with modern trends.
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Men's Card 1 -->
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
@@ -605,7 +688,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Formal Focus</h3>
                         <p class="text-gray-600 mb-4">Suits, shirts, and trousers for the modern professional.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
 
@@ -621,7 +704,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Casual Comfort</h3>
                         <p class="text-gray-600 mb-4">T-shirts, jeans, and casual wear for everyday comfort.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
 
@@ -637,7 +720,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Ethnic Elegance</h3>
                         <p class="text-gray-600 mb-4">Kurtas, sherwanis, and ethnic wear for special occasions.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
             </div>
@@ -653,12 +736,13 @@
             <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">
                 Explore our fun and comfortable range of kids' clothing designed for play and style.
             </p>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Kids Card 1 -->
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="https://picsum.photos/seed/kids1/600/400.jpg" alt="Girls Collection" class="card-image">
+                        <img src="https://picsum.photos/seed/kids1/600/400.jpg" alt="Girls Collection"
+                            class="card-image">
                         <div class="card-overlay">
                             <h3 class="overlay-title">Girls Delight</h3>
                             <p class="overlay-subtitle">Pretty and playful</p>
@@ -667,12 +751,13 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Girls Delight</h3>
                         <p class="text-gray-600 mb-4">Dresses, tops, and ethnic wear for young fashionistas.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="https://picsum.photos/seed/kids1/600/400.jpg" alt="Girls Collection" class="card-image">
+                        <img src="https://picsum.photos/seed/kids1/600/400.jpg" alt="Girls Collection"
+                            class="card-image">
                         <div class="card-overlay">
                             <h3 class="overlay-title">Girls Delight</h3>
                             <p class="overlay-subtitle">Pretty and playful</p>
@@ -688,7 +773,8 @@
                 <!-- Kids Card 2 -->
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="https://picsum.photos/seed/kids2/600/400.jpg" alt="Boys Collection" class="card-image">
+                        <img src="https://picsum.photos/seed/kids2/600/400.jpg" alt="Boys Collection"
+                            class="card-image">
                         <div class="card-overlay">
                             <h3 class="overlay-title">Boys Adventure</h3>
                             <p class="overlay-subtitle">Cool and comfortable</p>
@@ -697,14 +783,15 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Boys Adventure</h3>
                         <p class="text-gray-600 mb-4">Shirts, t-shirts, and ethnic wear for active young boys.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
 
                 <!-- Kids Card 3 -->
                 <div class="collection-card bg-white rounded-xl shadow-lg overflow-hidden">
                     <div class="relative">
-                        <img src="https://picsum.photos/seed/kids3/600/400.jpg" alt="Infant Collection" class="card-image">
+                        <img src="https://picsum.photos/seed/kids3/600/400.jpg" alt="Infant Collection"
+                            class="card-image">
                         <div class="card-overlay">
                             <h3 class="overlay-title">Infant Care</h3>
                             <p class="overlay-subtitle">Gentle and soft</p>
@@ -713,7 +800,7 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Infant Care</h3>
                         <p class="text-gray-600 mb-4">Soft and comfortable clothing for newborns and infants.</p>
-                        <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a>
+                        <!-- <a href="#" class="text-[#E74C3C] font-semibold hover:underline">Explore Collection →</a> -->
                     </div>
                 </div>
             </div>
@@ -727,17 +814,21 @@
                 Follow us on
             </h3>
             <div class="flex justify-center space-x-10 mb-6">
-                <a href="https://www.instagram.com/shoprite" target="_blank" class="text-gray-400 hover:text-[#E74C3C] transition">
+                <a href="https://www.instagram.com/shoprite" target="_blank"
+                    class="text-gray-400 hover:text-[#E74C3C] transition">
                     <i class="fab fa-instagram text-2xl"></i>
                 </a>
-                <a href="https://www.facebook.com/shoprite" target="_blank" class="text-gray-400 hover:text-[#E74C3C] transition">
+                <a href="https://www.facebook.com/shoprite" target="_blank"
+                    class="text-gray-400 hover:text-[#E74C3C] transition">
                     <i class="fab fa-facebook-f text-2xl"></i>
                 </a>
-                <a href="https://www.youtube.com/@shoprite" target="_blank" class="text-gray-400 hover:text-[#E74C3C] transition">
+                <a href="https://www.youtube.com/@shoprite" target="_blank"
+                    class="text-gray-400 hover:text-[#E74C3C] transition">
                     <i class="fab fa-youtube text-2xl"></i>
                 </a>
             </div>
-            <p>&copy; 2025 <span class="font-semibold text-gray-800">SHOPRITE Fashion</span>. Crafted for the Future.</p>
+            <p>&copy; 2025 <span class="font-semibold text-gray-800">SHOPRITE Fashion</span>. Crafted for the Future.
+            </p>
         </div>
     </footer>
 
@@ -747,14 +838,14 @@
         const collectionSections = document.querySelectorAll('.collection-section');
 
         categoryBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
+            btn.addEventListener('click', function () {
                 // Remove active class from all buttons
                 categoryBtns.forEach(b => b.classList.remove('active'));
                 // Add active class to clicked button
                 this.classList.add('active');
-                
+
                 const category = this.getAttribute('data-category');
-                
+
                 // Scroll to the selected section
                 const targetSection = document.getElementById(category);
                 if (targetSection) {
@@ -767,7 +858,7 @@
         });
 
         // Update active button based on scroll position
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             let current = '';
             collectionSections.forEach(section => {
                 const sectionTop = section.offsetTop;

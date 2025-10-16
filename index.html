@@ -7,7 +7,7 @@
     <title>SHOPRITE Fashion - Premium Indian Clothing Brand</title>
 
     <!-- Favicon Link -->
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <!-- SEO Meta Tags for Visibility -->
     <meta name="description"
@@ -20,10 +20,10 @@
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "SHOPRITE Future Fashion",
+      "name": "SHOPRITE Retail",
       "image": "assets/logo.jpeg",
       "url": "https://shoprite-retail.com", 
-      "telephone": "+91-9876543210",
+      "telephone": "+91-",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "New City Mall, Store L01",
@@ -184,7 +184,7 @@
         .js-cyclic-image {
             transition: opacity 0.2s ease-in-out;
             image-orientation: from-image;
-            
+
         }
 
         /* For the 3D tilt effect, we still want the image to move */
@@ -506,10 +506,10 @@
             transition: opacity 0.3s ease;
         }
 
-        .map-container:hover .map-overlay {
-            opacity: 0;
+        /* .map-container:hover .map-overlay { */
+            /* opacity: 0; */
             /* Hide overlay on hover if map was real */
-        }
+        /* } */
 
         /* --- Footer Social Icon Animation --- */
         .social-icon-wrapper {
@@ -609,8 +609,7 @@
                 <a href="#collection" class="nav-link text-black pb-1">Collection</a>
                 <a href="#lookbook" class="nav-link text-black pb-1">Lookbook</a>
                 <a href="#mission" class="nav-link text-black pb-1">Mission</a>
-                <a href="#contact" class="nav-link text-black pb-1">Retail</a>
-                <a href="#products-feed" class="nav-link text-black pb-1">Shop</a>
+                <a href="#contact" class="nav-link text-black pb-1">Contact Us</a>
             </div>
 
             <!-- Mobile Menu Button -->
@@ -713,7 +712,7 @@
                     <!-- ROW 2: CORE DEMOGRAPHICS (3-Column Grid) -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
                         <!--  ROW 1: FEATURE - SAREES & DRAPES -->
-                        <a href="collection.html" class="collection-card rounded-xl group">
+                        <a href="collection.html#saree" class="collection-card rounded-xl group">
                             <!-- Image Container with data for JS cycling -->
                             <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
                                      "assets/collection/coll-home/saree1.jpg",
@@ -735,7 +734,7 @@
                             </div>
                         </a>
                         <!-- Item 2: MEN'S WEAR -->
-                        <a href="/collection.html" class="collection-card rounded-xl group">
+                        <a href="/collection.html#men" class="collection-card rounded-xl group">
                             <!-- Image Container with data for JS cycling -->
                             <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
                                      "assets/collection/coll-home/men1.jpg",
@@ -757,7 +756,7 @@
                         </a>
 
                         <!-- Item 3: KIDS' & CASUALS -->
-                        <a href="/collection.html" class="collection-card rounded-xl group">
+                        <a href="/collection.html#kids" class="collection-card rounded-xl group">
                             <!-- Image Container with data for JS cycling -->
                             <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
                                      "assets/collection/coll-home/kid1.jpg",
@@ -766,7 +765,7 @@
                                  ]'>
                                 <img src="https://placehold.co/600x800/AAAAAA/E74C3C?text=KIDS WEAR"
                                     alt="Shoprite Kids' and Casual Wear"
-                                    class="js-cyclic-image w-full h-full object-cover">
+                                    class="js-cyclic-image w-full h-full object-contain">
                             </div>
                             <div class="p-6">
                                 <h3 class="text-xl font-semibold mb-1 text-color-text-dark">Kids' & Casual Wear</h3>
@@ -779,7 +778,7 @@
                         </a>
 
                         <!-- Item 4: WOMEN'S MODERN APPAREL (New dedicated card) -->
-                        <a href="/collection.html" class="collection-card rounded-xl group">
+                        <a href="/collection.html#women" class="collection-card rounded-xl group">
                             <!-- Image Container with data for JS cycling -->
                             <div class="h-96 overflow-hidden js-image-cycler" data-image-set='[
                                      "assets/collection/coll-home/women1.jpg",
@@ -873,14 +872,16 @@
 
                         <!-- Text Content -->
                         <div class="p-4">
-                            <h2 class="text-3xl font-semibold uppercase tracking-widest mb-4 text-accent">Our Ethos</h2>
+                            <h2 class="text-3xl font-semibold uppercase tracking-widest mb-4 text-accent">Shoprite
+                                Retail<br>Ethos</h2>
                             <!-- UPDATED MISSION HEADLINE -->
                             <h3 class="text-5xl font-bold mb-6 text-color-text-dark leading-tight">
                                 Quality Forged by Decades of Craft.
                             </h3>
                             <!-- UPDATED MISSION BODY: Integrated the four pillars (Integrity, Growth, Collaboration, Purpose) -->
                             <p class="text-gray-600 leading-relaxed mb-8 border-l-4 border-accent pl-4">
-                                Shoprite is leveraging decades of experience as a trusted manufacturer based in Surat.
+                                Shoprite Retail is leveraging decades of experience as a trusted manufacturer based in
+                                Surat.
                                 Our approach is defined by four pillars: Integrity in sourcing and production; a
                                 commitment to Perpetual Growth through innovation. Collaborative Impact with our
                                 partners; and a Purpose-Driven focus on enduring quality. As a rapidly growing
@@ -900,7 +901,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 6. Featured Products Feed (New Section) -->
         <section id="products-feed" class="py-20 sm:py-24 bg-color-secondary-bg px-4">
             <div class="container mx-auto">
@@ -908,16 +908,16 @@
                     Featured Products
                 </h2>
                 <p class="text-gray-600 text-lg mb-12 max-w-3xl mx-auto text-center">
-                    Shop the current season's most sought-after apparel, available now through our Surat showroom.
+                    Shop the current season's most sought-after apparel, available now through our Shoprite Retail Surat
+                    showroom.
                 </p>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-8">
 
                     <!-- Product 1: The Linear Coat -->
-                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                    <a href="/collection.html#latest" class="product-card rounded-xl group block text-color-text-dark">
                         <div class="h-72 md:h-80 overflow-hidden">
-                            <img src="assets/collection/coll-home/hype1.webp"
-                                alt="Men's Linear Form Structured Coat"
+                            <img src="assets/collection/coll-home/hype1.webp" alt="Men's Linear Form Structured Coat"
                                 class="product-card-image w-full h-full object-contain">
                         </div>
                         <div class="p-4 text-center">
@@ -928,10 +928,10 @@
                     </a>
 
                     <!-- Product 2: Crimson Drape Saree -->
-                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                    <a href="/collection.html#latest" class="product-card rounded-xl group block text-color-text-dark">
                         <div class="h-72 md:h-80 overflow-hidden">
-                            <img src="assets/collection/coll-home/hype2.avif"
-                                alt="Women's Crimson Drape Saree" class="product-card-image w-full h-full object-contain">
+                            <img src="assets/collection/coll-home/hype2.avif" alt="Women's Crimson Drape Saree"
+                                class="product-card-image w-full h-full object-contain">
                         </div>
                         <div class="p-4 text-center">
                             <h3 class="text-lg font-semibold truncate mb-1">Crimson Drape Saree</h3>
@@ -941,10 +941,9 @@
                     </a>
 
                     <!-- Product 3: Modular Trousers -->
-                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                    <a href="/collection.html#latest" class="product-card rounded-xl group block text-color-text-dark">
                         <div class="h-72 md:h-80 overflow-hidden">
-                            <img src="assets/collection/coll-home/hype3.jpg"
-                                alt="Unisex Modular Utility Trousers"
+                            <img src="assets/collection/coll-home/hype3.jpg" alt="Unisex Modular Utility Trousers"
                                 class="product-card-image w-full h-full object-cover">
                         </div>
                         <div class="p-4 text-center">
@@ -955,10 +954,9 @@
                     </a>
 
                     <!-- Product 4: Structured Knit Dress -->
-                    <a href="/collection.html" class="product-card rounded-xl group block text-color-text-dark">
+                    <a href="/collection.html#latest" class="product-card rounded-xl group block text-color-text-dark">
                         <div class="h-72 md:h-80 overflow-hidden">
-                            <img src="assets/collection/coll-home/hype4.webp"
-                                alt="Women's Structured Knit Midi Dress"
+                            <img src="assets/collection/coll-home/hype4.webp" alt="Women's Structured Knit Midi Dress"
                                 class="product-card-image w-full h-full object-cover">
                         </div>
                         <div class="p-4 text-center">
@@ -998,7 +996,10 @@
                     <div class="lg:col-span-2 map-container">
                         <!-- Placeholder for Map (A real map iframe would go here) -->
                         <div class="map-overlay">
-                            [Map Placeholder: Surat Flagship Location]
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d195.2724707704411!2d72.85030169388324!3d21.185498877620088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjHCsDExJzA4LjAiTiA3MsKwNTEnMDEuNCJF!5e1!3m2!1sen!2sin!4v1760514321172!5m2!1sen!2sin"
+                                width="1000" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
 
@@ -1011,20 +1012,21 @@
                             <div>
                                 <p class="text-xs uppercase font-semibold text-gray-500 tracking-wider mb-1">Surat
                                     Flagship Address</p>
-                                <p class="text-lg font-medium text-color-text-dark">New City Mall, Store L01<br>Surat,
-                                    Gujarat 395003</p>
+                                <p class="text-lg font-medium text-color-text-dark">
+                                    <a href="https://maps.app.goo.gl/oRqUnTzffXkCc79y9?g_st=iw">HTC Market, 2nd floor,<br> Anjana, Surat, 395002</a>
+                                </p>
                             </div>
                             <div>
                                 <p class="text-xs uppercase font-semibold text-gray-500 tracking-wider mb-1">General
                                     Inquiries</p>
-                                <a href="mailto:info@shoprite-fashion.com"
-                                    class="text-lg font-medium text-accent hover:underline">info@shoprite-fashion.com</a>
+                                <a href="mailto:shopritellp@gmail.com"
+                                    class="text-lg font-medium text-accent hover:underline">shopritellp@gmail.com</a>
                             </div>
                             <div>
                                 <p class="text-xs uppercase font-semibold text-gray-500 tracking-wider mb-1">
                                     Phone/WhatsApp</p>
-                                <a href="tel:+919876543210" class="text-lg font-medium text-accent hover:underline">+91
-                                    98765 43210</a>
+                                <a href="tel:+918866840930" class="text-lg font-medium text-accent hover:underline">+91
+                                    88668 40930</a>
                             </div>
                             <div>
                                 <a href="/contact.html" class="text-lg font-medium text-accent hover:underline">Contact
@@ -1042,7 +1044,7 @@
     </main>
 
     <!-- Floating WhatsApp CTA Button (NEW) -->
-    <a href="https://wa.me/919876543210" target="_blank" class="whatsapp-cta fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 
+    <a href="https://wa.me/918866840930" target="_blank" class="whatsapp-cta fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 
               w-14 h-14 sm:w-16 sm:h-16 
               rounded-full flex items-center justify-center text-white 
               hover:shadow-xl" aria-label="Chat with us on WhatsApp">
@@ -1062,7 +1064,7 @@
             <div class="flex justify-center space-x-6 mb-6">
 
                 <!-- 1. WhatsApp -->
-                <a href="https://wa.me/919876543210" target="_blank" class="social-icon-wrapper text-gray-400 p-2"
+                <a href="https://wa.me/918866840930" target="_blank" class="social-icon-wrapper text-gray-400 p-2"
                     aria-label="WhatsApp">
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -1095,7 +1097,12 @@
                 </a>
             </div>
             <p>&copy; 2024 SHOPRITE Fashion. All rights reserved. Quality Wear by Design. A premium **clothing brand
-                from Surat**, India.</p>
+                from Surat**, India.
+            </p>
+            <!-- <p>developed and desined by <a
+                    href="https://www.google.com/search?q=karnav+chandan&rlz=1C1ONGR_enIN1133IN1133&oq=karnav+chandan&gs_lcrp=EgZjaHJvbWUqBggAEEUYOzIGCAAQRRg7MgYIARBFGEAyBggCEEUYOzIGCAMQRRg7MgYIBBAjGCcyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQgzNzIzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8" style="color: #25D366;">Karnav
+                    The Developer</a></p> -->
+
         </div>
     </footer>
 
@@ -1103,10 +1110,8 @@
     <div id="private-viewing-modal" class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center p-4">
 
         <!-- Modal Content Card -->
-        <div
+        <!-- <div
             class="modal-content relative bg-white w-full max-w-lg mx-auto rounded-xl shadow-2xl p-6 sm:p-10 border border-gray-100">
-
-            <!-- Close Button -->
             <button id="close-modal-btn"
                 class="absolute top-3 right-3 p-2 text-gray-400 hover:text-color-text-dark transition duration-200"
                 aria-label="Close Modal">
@@ -1115,15 +1120,15 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
                     </path>
                 </svg>
-            </button>
+            </button> -->
 
-            <h3 class="text-3xl font-bold mb-4 text-color-text-dark">Schedule Your Private Viewing</h3>
+        <!-- <h3 class="text-3xl font-bold mb-4 text-color-text-dark">Schedule Your Private Viewing</h3>
             <p class="text-gray-600 mb-8">
                 Reserve an exclusive, one-on-one consultation at our Surat flagship showroom to view the collection.
-            </p>
+            </p> -->
 
-            <!-- Scheduling Form -->
-            <form id="schedule-form" class="space-y-5">
+        <!-- Scheduling Form -->
+        <!-- <form id="schedule-form" class="space-y-5">
 
                 <div>
                     <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Full Name</label>
@@ -1166,10 +1171,10 @@
                     class="bg-accent text-white font-bold py-3 px-6 rounded-full w-full hover:bg-red-700 transition duration-300 shadow-lg mt-4">
                     Confirm Appointment
                 </button>
-            </form>
+            </form> -->
 
-            <!-- Confirmation Message Box (Hidden by default) -->
-            <div id="confirmation-message"
+        <!-- Confirmation Message Box (Hidden by default) -->
+        <!-- <div id="confirmation-message"
                 class="hidden absolute inset-0 bg-white/95 backdrop-blur-sm flex items-center justify-center rounded-xl p-6 text-center">
                 <div>
                     <h4 class="text-2xl font-bold mb-3 text-accent">Request Submitted!</h4>
@@ -1178,152 +1183,152 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
         <!-- END Modal Content Card -->
-    </div>
-    <!-- END Modal -->
+        <!-- </div> -->
+        <!-- END Modal -->
 
 
-    <!-- JavaScript for Mobile Menu, Smooth Scroll, Preloader, and Image Cycling -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const mainHeader = document.getElementById('main-header');
-            const preloader = document.getElementById('preloader');
-            const SCROLL_THRESHOLD = 50; // Pixels scrolled before shrinking
-            const CYCLE_INTERVAL_MS = 2000; // 2 seconds
+        <!-- JavaScript for Mobile Menu, Smooth Scroll, Preloader, and Image Cycling -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+                const navLinks = document.querySelectorAll('.nav-link');
+                const mainHeader = document.getElementById('main-header');
+                const preloader = document.getElementById('preloader');
+                const SCROLL_THRESHOLD = 50; // Pixels scrolled before shrinking
+                const CYCLE_INTERVAL_MS = 2000; // 2 seconds
 
-            // MODAL ELEMENTS (Kept for future functionality, but the trigger button is removed)
-            const modalOverlay = document.getElementById('private-viewing-modal');
-            const closeModalBtn = document.getElementById('close-modal-btn');
-            const scheduleForm = document.getElementById('schedule-form');
-            const confirmationMessage = document.getElementById('confirmation-message');
+                // MODAL ELEMENTS (Kept for future functionality, but the trigger button is removed)
+                const modalOverlay = document.getElementById('private-viewing-modal');
+                const closeModalBtn = document.getElementById('close-modal-btn');
+                const scheduleForm = document.getElementById('schedule-form');
+                const confirmationMessage = document.getElementById('confirmation-message');
 
-            // --- FUNCTIONS ---
+                // --- FUNCTIONS ---
 
-            // Function to close the modal (no longer needed, but kept for cleanup)
-            const closeModal = () => {
-                modalOverlay.classList.remove('open');
-                document.body.style.overflow = ''; // Restore scrolling
-            };
+                // Function to close the modal (no longer needed, but kept for cleanup)
+                const closeModal = () => {
+                    modalOverlay.classList.remove('open');
+                    document.body.style.overflow = ''; // Restore scrolling
+                };
 
-            // Function to open the modal (no longer needed, but kept for cleanup)
-            // const openModal = () => {
-            //     modalOverlay.classList.add('open');
-            //     document.body.style.overflow = 'hidden'; // Disable background scrolling
-            //     confirmationMessage.classList.add('hidden'); // Reset confirmation
-            //     scheduleForm.reset(); // Reset form fields
-            // };
+                // Function to open the modal (no longer needed, but kept for cleanup)
+                // const openModal = () => {
+                //     modalOverlay.classList.add('open');
+                //     document.body.style.overflow = 'hidden'; // Disable background scrolling
+                //     confirmationMessage.classList.add('hidden'); // Reset confirmation
+                //     scheduleForm.reset(); // Reset form fields
+                // };
 
-            // --- EVENT LISTENERS ---
+                // --- EVENT LISTENERS ---
 
-            // 1. Mobile Menu Toggle
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+                // 1. Mobile Menu Toggle
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
 
-            // 2. Hide Mobile Menu when a link is clicked & Smooth Scroll
-            navLinks.forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                // 2. Hide Mobile Menu when a link is clicked & Smooth Scroll
+                navLinks.forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        if (!mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                        const targetId = link.getAttribute('href').substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                });
+
+                // 3. Header Shrink Effect on Scroll
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > SCROLL_THRESHOLD) {
+                        mainHeader.classList.add('scrolled');
+                    } else {
+                        mainHeader.classList.remove('scrolled');
                     }
                 });
-            });
-
-            // 3. Header Shrink Effect on Scroll
-            window.addEventListener('scroll', () => {
                 if (window.scrollY > SCROLL_THRESHOLD) {
                     mainHeader.classList.add('scrolled');
-                } else {
-                    mainHeader.classList.remove('scrolled');
                 }
-            });
-            if (window.scrollY > SCROLL_THRESHOLD) {
-                mainHeader.classList.add('scrolled');
-            }
 
-            // 4. Preloader Logic: Hide the preloader once the entire page is loaded
-            window.addEventListener('load', () => {
-                if (preloader) {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => {
-                        preloader.remove();
-                    }, 500);
-                }
-            });
-
-            // 5. Product Card Image Cycling Logic
-            const imageCyclers = document.querySelectorAll('.js-image-cycler');
-            imageCyclers.forEach(container => {
-                const imageElement = container.querySelector('.js-cyclic-image');
-                // Correctly parsing the data-image-set attribute
-                try {
-                    const imageSet = JSON.parse(container.dataset.imageSet);
-                    let currentIndex = 0;
-
-                    setInterval(() => {
-                        currentIndex = (currentIndex + 1) % imageSet.length;
-
-                        imageElement.classList.add('opacity-0');
-
+                // 4. Preloader Logic: Hide the preloader once the entire page is loaded
+                window.addEventListener('load', () => {
+                    if (preloader) {
+                        preloader.style.opacity = '0';
                         setTimeout(() => {
-                            imageElement.src = imageSet[currentIndex];
-                            // Update Alt Text (simplified for mock data)
-                            imageElement.alt = imageElement.alt.replace(/\d+$/, currentIndex + 1);
+                            preloader.remove();
+                        }, 500);
+                    }
+                });
 
-                            imageElement.classList.remove('opacity-0');
-                        }, 200);
+                // 5. Product Card Image Cycling Logic
+                const imageCyclers = document.querySelectorAll('.js-image-cycler');
+                imageCyclers.forEach(container => {
+                    const imageElement = container.querySelector('.js-cyclic-image');
+                    // Correctly parsing the data-image-set attribute
+                    try {
+                        const imageSet = JSON.parse(container.dataset.imageSet);
+                        let currentIndex = 0;
 
-                    }, CYCLE_INTERVAL_MS);
-                } catch (e) {
-                    console.error("Error parsing image set data:", e);
-                }
+                        setInterval(() => {
+                            currentIndex = (currentIndex + 1) % imageSet.length;
+
+                            imageElement.classList.add('opacity-0');
+
+                            setTimeout(() => {
+                                imageElement.src = imageSet[currentIndex];
+                                // Update Alt Text (simplified for mock data)
+                                imageElement.alt = imageElement.alt.replace(/\d+$/, currentIndex + 1);
+
+                                imageElement.classList.remove('opacity-0');
+                            }, 200);
+
+                        }, CYCLE_INTERVAL_MS);
+                    } catch (e) {
+                        console.error("Error parsing image set data:", e);
+                    }
+                });
+                // END Image Cycling Logic
+
+
+                // 6. Modal Logic (Disabled since the trigger button is gone)
+
+                // // Open Modal
+                // openModalBtn.addEventListener('click', openModal);
+
+                // Close Modal via X button
+                closeModalBtn.addEventListener('click', closeModal);
+
+                // Close Modal by clicking on the dark backdrop (overlay)
+                modalOverlay.addEventListener('click', (e) => {
+                    // Check if the click occurred directly on the overlay itself, not the content
+                    if (e.target === modalOverlay) {
+                        closeModal();
+                    }
+                });
+
+                // Handle Form Submission (Preventing actual submission for this mock-up)
+                scheduleForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // Simulate form submission delay
+                    setTimeout(() => {
+                        // Show confirmation message
+                        confirmationMessage.classList.remove('hidden');
+
+                        // Automatically close modal after 3 seconds
+                        setTimeout(closeModal, 3000);
+
+                    }, 500);
+                });
+
             });
-            // END Image Cycling Logic
-
-
-            // 6. Modal Logic (Disabled since the trigger button is gone)
-
-            // // Open Modal
-            // openModalBtn.addEventListener('click', openModal);
-
-            // Close Modal via X button
-            closeModalBtn.addEventListener('click', closeModal);
-
-            // Close Modal by clicking on the dark backdrop (overlay)
-            modalOverlay.addEventListener('click', (e) => {
-                // Check if the click occurred directly on the overlay itself, not the content
-                if (e.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-
-            // Handle Form Submission (Preventing actual submission for this mock-up)
-            scheduleForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-
-                // Simulate form submission delay
-                setTimeout(() => {
-                    // Show confirmation message
-                    confirmationMessage.classList.remove('hidden');
-
-                    // Automatically close modal after 3 seconds
-                    setTimeout(closeModal, 3000);
-
-                }, 500);
-            });
-
-        });
-    </script>
+        </script>
 </body>
 
 </html>
